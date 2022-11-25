@@ -1,11 +1,11 @@
 import { useState, useRef, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 import AuthContext from '../../store/auth-context';
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
-  const history = useHistory();
+  // const history = useHistory();
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -21,7 +21,7 @@ const AuthForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const enteredName = nameInputRef.current.value;
+    // const enteredName = nameInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
@@ -31,15 +31,15 @@ const AuthForm = () => {
     let url;
     if (isLogin) {
       url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBZhsabDexE9BhcJbGxnZ4DiRlrCN9xe24';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBL_QBa6tSWdpmmXSYoIxd8kgtcAReIQ7w';
     } else {
       url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBZhsabDexE9BhcJbGxnZ4DiRlrCN9xe24';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBL_QBa6tSWdpmmXSYoIxd8kgtcAReIQ7w';
     }
     fetch(url, {
       method: 'POST',
       body: JSON.stringify({
-        name: enteredName,
+        // name: enteredName,
         email: enteredEmail,
         password: enteredPassword,
         returnSecureToken: true,
@@ -64,11 +64,11 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        const expirationTime = new Date(
-          new Date().getTime() + +data.expiresIn * 1000
-        );
-        authCtx.login(data.idToken, expirationTime.toISOString());
-        history.replace('/');
+        // const expirationTime = new Date(
+        //   new Date().getTime() + +data.expiresIn * 1000
+        // );
+        authCtx.login(data.idToken);
+        // history.replace('/');
       })
       .catch((err) => {
         alert(err.message);
