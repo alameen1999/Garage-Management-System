@@ -1,0 +1,16 @@
+.starting {
+  margin: 3rem auto;
+  text-align: center;
+  background-image: url("file:///C:/Users/ajay.vs/Desktop/MicrosoftTeams-image%20(2).png");
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.starting h1 {
+  font-size: 5rem;
+}
