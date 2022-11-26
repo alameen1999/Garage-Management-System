@@ -32,10 +32,10 @@ const AuthForm = () => {
     if (isLogin) {
       url =
 
-        'http://127.0.0.1:8000/api/login/';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDckhOP3zEBtZ48gdfTJPpyHCbNb42NDIY';
     } else {
       url =
-        'http://127.0.0.1:8000/api/signup/';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDckhOP3zEBtZ48gdfTJPpyHCbNb42NDIY';
 
     }
     fetch(url, {
@@ -69,10 +69,10 @@ const AuthForm = () => {
         // const expirationTime = new Date(
         //   new Date().getTime() + +data.expiresIn * 1000
         // );
-        authCtx.login(data.jwt);
-        authCtx.setUser({userName:data.username})
-        sessionStorage.setItem('jwt',JSON.stringify(data.jwt))
-        sessionStorage.setItem('name',JSON.stringify(data.username))
+        authCtx.login(data.idToken);
+        // authCtx.setUser({userName:data.username})
+        // sessionStorage.setItem('jwt',JSON.stringify(data.jwt))
+        // sessionStorage.setItem('name',JSON.stringify(data.username))
         // history.replace('/profile');
       })
       .catch((err) => {

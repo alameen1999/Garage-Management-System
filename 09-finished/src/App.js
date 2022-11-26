@@ -6,6 +6,7 @@ import UserProfile from './components/Profile/UserProfile';
 import AuthPage from './pages/AuthPage';
 import HomePage from './pages/HomePage';
 import AuthContext from './store/auth-context';
+import Loggedin from './pages/Loggedin';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -13,11 +14,27 @@ function App() {
   return (
     <Layout>
       <Switch>
+
+      {/* {authCtx.isLoggedIn && ( 
+        <Route path='/useraccount' exact>
+          <Loggedin/>
+        </Route>
+        )} */}
+
+
+
         {!authCtx.isLoggedIn && ( 
         <Route path='/' exact>
           <HomePage />
         </Route>
         )}
+
+{authCtx.isLoggedIn && ( 
+
+<Route path='/' exact>
+ <Loggedin/>
+ </Route>
+)}
 
         {!authCtx.isLoggedIn && (
           <Route path='/auth'>
@@ -25,9 +42,20 @@ function App() {
           </Route>
         )}
         <Route path='/profile'>
-          {authCtx.isLoggedIn && <UserProfile />}
+          {authCtx.isLoggedIn && 
+          <UserProfile />}
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
         </Route>
+
+
+        {/* <Route path='/useraccount'>
+          {authCtx.isLoggedIn && 
+          <Loggedin/>}
+          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+        </Route> */}
+
+
+
         <Route path='*'>
           <Redirect to='/' />
         </Route>
