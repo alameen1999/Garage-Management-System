@@ -31,10 +31,12 @@ const AuthForm = () => {
     let url;
     if (isLogin) {
       url =
+
         'http://127.0.0.1:8000/api/login/';
     } else {
       url =
         'http://127.0.0.1:8000/api/signup/';
+
     }
     fetch(url, {
       method: 'POST',

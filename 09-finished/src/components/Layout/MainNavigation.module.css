@@ -1,12 +1,12 @@
 .header {
   width: 100%;
   height: 5rem;
-  background-color: #38015c;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  background-color: #590392;
+  box-shadow: 0 1px 4px rgba(21, 21, 21, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10%;
+  padding: 0 5%;
   /* position: fixed; */
   /* position: sticky; */
   /* position: relative; */
@@ -14,12 +14,24 @@
     top: 0px;
     z-index: 1;
 }
+.headericon img {
+  width: 200px;
+  margin-top: 7px;
+  /* padding-left: -10px; */
+  margin-left: -110px;
+ 
+}
+.logo h1 {
+  /* color: rgb(251, 228, 228); */
+}
 
 .logo {
-  font-family: 'Lato', sans-serif;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 2rem;
   color: white;
-  margin: 0;
+  margin-left: -450px;
+  /* padding-right: 80%; */
+  
 }
 
 .header ul {
@@ -47,15 +59,15 @@
   color: white;
   font-weight: bold;
   padding: 0.5rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 18px;
   cursor: pointer;
 }
 
 .header a:hover {
-  color: #c291e2;
+  color: #141414;
 }
 
 .header button:hover {
-  background-color: #c291e2;
-  color: #38015c;
+  background-color: #cfb9cf;
+  color: #0c0c0c;
 }

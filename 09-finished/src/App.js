@@ -18,6 +18,7 @@ function App() {
           <HomePage />
         </Route>
         )}
+
         {!authCtx.isLoggedIn && (
           <Route path='/auth'>
             <AuthPage />
