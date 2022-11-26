@@ -31,15 +31,17 @@ const MainNavigation = () => {
       <nav>
         <ul>
           {!isLoggedIn && (
-            <button>
-              <Link to='/auth'>Login</Link>
-            </button>
+
+            <li>
+           <Link to='/auth'>Login</Link>
+            </li>
           )}
           {isLoggedIn && (
-            <>
-            <h1>Hello User!</h1>
-              {/* <Link to='/profile'>Profile</Link> */}
-            </>
+            
+            <li >
+              <strong className='text-light'>Welcome  {authCtx.user.userName}</strong> <Link to='/profile'>Profile</Link>
+            </li>
+
           )}
           {isLoggedIn && (
             

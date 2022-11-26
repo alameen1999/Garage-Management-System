@@ -1,17 +1,17 @@
 import { useState, useRef, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 import AuthContext from '../../store/auth-context';
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
-  const history = useHistory();
+  // const history = useHistory();
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
   const authCtx = useContext(AuthContext);
-
+  
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,10 +31,12 @@ const AuthForm = () => {
     let url;
     if (isLogin) {
       url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBCIR8uXwP-sdTTWX8rizZp-YG4QATmK5A';
+
+        'http://127.0.0.1:8000/api/login/';
     } else {
       url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBCIR8uXwP-sdTTWX8rizZp-YG4QATmK5A';
+        'http://127.0.0.1:8000/api/signup/';
+
     }
     fetch(url, {
       method: 'POST',
@@ -64,11 +66,14 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        const expirationTime = new Date(
-          new Date().getTime() + +data.expiresIn * 1000
-        );
-        authCtx.login(data.idToken, expirationTime.toISOString());
-        history.replace('/');
+        // const expirationTime = new Date(
+        //   new Date().getTime() + +data.expiresIn * 1000
+        // );
+        authCtx.login(data.jwt);
+        authCtx.setUser({userName:data.username})
+        sessionStorage.setItem('jwt',JSON.stringify(data.jwt))
+        sessionStorage.setItem('name',JSON.stringify(data.username))
+        // history.replace('/profile');
       })
       .catch((err) => {
         alert(err.message);
