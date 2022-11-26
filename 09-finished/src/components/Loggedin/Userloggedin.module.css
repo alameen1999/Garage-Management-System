@@ -1,0 +1,33 @@
+table{
+  position: fixed;
+  top: 100px;
+  left: 180px;
+}
+
+
+.icon{
+  /* opacity: 0;
+  right: 0;
+  padding-right: 165px;
+  content: '\00bb';
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+   */
+   cursor: pointer;
+  }
+
+  .title{
+    margin: 20px 0;
+    padding-right: 150px;
+    
+  }
+
+.icon:hover {
+  opacity: 0.3;
+} 
+
+td .icon:hover span:after {
+  opacity: 1;
+  right: 0;
+} 
