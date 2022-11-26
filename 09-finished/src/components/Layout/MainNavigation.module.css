@@ -1,5 +1,5 @@
 .header {
-  width: 100%;
+  /* width: 100%;
   height: 5rem;
   background-color: #590392;
   box-shadow: 0 1px 4px rgba(21, 21, 21, 0.2);
@@ -7,23 +7,34 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 5%;
-  /* position: fixed; */
-  /* position: sticky; */
-  /* position: relative; */
+  /* position: fixed; 
+  /* position: sticky; 
+  /* position: relative; 
   position: sticky;
     top: 0px;
-    z-index: 1;
+    z-index: 1; */
+    position: fixed;
+  top:0; left: 0; right:0;
+  height: 5rem;
+  /* background:rgb(255, 255, 255); */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:2rem 9%;
+  background: rgba(0,0,0,0.5);
+  /* border-radius: 20%; */
 }
-.headericon img {
+/* .headericon img {
   width: 200px;
   margin-top: 7px;
   /* padding-left: -10px; */
-  margin-left: -110px;
+  /* margin-left: -110px; */
  
-}
-.logo h1 {
-  /* color: rgb(251, 228, 228); */
-}
+
+/* .logo h1 {
+  /* color: rgb(251, 228, 228); 
+} */
 
 .logo {
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -64,7 +75,8 @@
 }
 
 .header a:hover {
-  color: #141414;
+  /* color: #141414; */
+  color:rgb(3, 140, 128);
 }
 
 .header button:hover {
