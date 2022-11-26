@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 import AuthContext from '../../store/auth-context';
 import classes from './MainNavigation.module.css';
+import image from '../images/landingpage.jpg';
+import AboutUs from '../About/AboutUs';
+import picture from '../images/iconimage.png';
+
 
 const MainNavigation = () => {
   const authCtx = useContext(AuthContext);
@@ -16,29 +20,37 @@ const MainNavigation = () => {
 
   return (
     <header className={classes.header}>
+
+      <div className={classes.headericon}>
+        <img src={picture}/>  
+      </div>
+
       <Link to='/'>
         <div className={classes.logo}>Automotive</div>
       </Link>
       <nav>
         <ul>
           {!isLoggedIn && (
-            <li>
+            <button>
               <Link to='/auth'>Login</Link>
-            </li>
+            </button>
           )}
           {isLoggedIn && (
-            <li>
-              <Link to='/profile'>Profile</Link>
-            </li>
+            <>
+            <h1>Hello User!</h1>
+              {/* <Link to='/profile'>Profile</Link> */}
+            </>
           )}
           {isLoggedIn && (
-            <li>
+            
               <button onClick={logoutHandler}>Logout</button>
-            </li>
+            
           )}
         </ul>
       </nav>
+      
     </header>
+    
   );
 };
 

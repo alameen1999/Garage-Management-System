@@ -1,16 +1,48 @@
 .starting {
-  margin: 3rem auto;
+  /* margin: 3rem auto; */
   text-align: center;
-  background-image: url("file:///C:/Users/ajay.vs/Desktop/MicrosoftTeams-image%20(2).png");
+  background-image: url("../images/landingpage.jpg");
   width: 100%;
   height: 100vh;
-  background-position: center;
+  background-position: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 0px;
+  /* margin-top: 0px; */
   margin-bottom: 0px;
+  
 }
 
 .starting h1 {
   font-size: 5rem;
+}
+
+
+  /* background-color:rgb(214, 214, 209); */
+  /* height: 200px; */
+  /* width: 400px;
+  text-align: center; */
+  /* margin-left: 400px;
+  padding-top: 40px;
+  margin-top: 20px; */
+  /* border: none;
+  border-radius: 45px; */
+  
+
+
+.about h2 {
+  font-size: 45px;
+  color: rgb(7, 7, 7);
+  padding-left: 50%;
+  padding-top: 20%;
+  margin: 0 0;
+}
+.about p {
+  font-size: 20px;
+  width: 500px;
+  font-weight: bold;
+  /* padding-top: 20%; */
+  margin-left: 50%;
+  padding-left: 150px;
+
+ 
 }

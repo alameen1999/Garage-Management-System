@@ -21,7 +21,7 @@ const AuthForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const enteredName = nameInputRef.current.value;
+    // const enteredName = nameInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
@@ -31,15 +31,15 @@ const AuthForm = () => {
     let url;
     if (isLogin) {
       url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBZhsabDexE9BhcJbGxnZ4DiRlrCN9xe24';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBCIR8uXwP-sdTTWX8rizZp-YG4QATmK5A';
     } else {
       url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBZhsabDexE9BhcJbGxnZ4DiRlrCN9xe24';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBCIR8uXwP-sdTTWX8rizZp-YG4QATmK5A';
     }
     fetch(url, {
       method: 'POST',
       body: JSON.stringify({
-        name: enteredName,
+        // name: enteredName,
         email: enteredEmail,
         password: enteredPassword,
         returnSecureToken: true,
