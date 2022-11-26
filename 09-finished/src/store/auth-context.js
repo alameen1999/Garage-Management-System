@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 // let logoutTimer;
 
 const AuthContext = React.createContext({
+  user:{},
   token: '',
   isLoggedIn: false,
   login: (token) => {},
+  setUser:(user)=>{},
   logout: () => {},
 });
 
@@ -45,7 +47,7 @@ export const AuthContextProvider = (props) => {
   // }
 
   const [token, setToken] = useState(null);
-
+  const [user, setUser] = useState({userName:''})
   const userIsLoggedIn = !!token;
 
   const logoutHandler = () => {
@@ -62,6 +64,9 @@ export const AuthContextProvider = (props) => {
   const loginHandler = (token) => {
     setToken(token);
   };
+  const userDetailsHandler=(user)=>{
+    setUser(user)
+  }
     // localStorage.setItem('token', token);
     // localStorage.setItem('expirationTime', expirationTime);
 
@@ -80,7 +85,9 @@ export const AuthContextProvider = (props) => {
   const contextValue = {
     token: token,
     isLoggedIn: userIsLoggedIn,
+    user: user,
     login: loginHandler,
+    setUser: userDetailsHandler,
     logout: logoutHandler,
   };
 

@@ -21,8 +21,9 @@ const AddProduct = () => {
    }
 
    const fetchData = async() => {
-     const albums = await (await Dummy.get('/albums')).data
-     setItems(albums.slice(0,5).map((data) => {
+     const albums = await (await Dummy.get('category')).data
+     setItems(albums.slice(0,8).map((data) => {
+      console.log();
       return {value:data.id,label:data.categoryname}
      }))
      setSelectedValue(items[0])

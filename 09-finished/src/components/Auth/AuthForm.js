@@ -11,7 +11,7 @@ const AuthForm = () => {
   const passwordInputRef = useRef();
 
   const authCtx = useContext(AuthContext);
-
+  
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -68,7 +68,10 @@ const AuthForm = () => {
         //   new Date().getTime() + +data.expiresIn * 1000
         // );
         authCtx.login(data.jwt);
-        // history.replace('/');
+        authCtx.setUser({userName:data.username})
+        sessionStorage.setItem('jwt',JSON.stringify(data.jwt))
+        sessionStorage.setItem('name',JSON.stringify(data.username))
+        // history.replace('/profile');
       })
       .catch((err) => {
         alert(err.message);

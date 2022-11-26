@@ -7,8 +7,6 @@ import classes from './MainNavigation.module.css';
 const MainNavigation = () => {
   const authCtx = useContext(AuthContext);
 
-  
-
   const isLoggedIn = authCtx.isLoggedIn;
 
   const logoutHandler = () => {
@@ -25,14 +23,13 @@ const MainNavigation = () => {
         <ul>
           {!isLoggedIn && (
             <li>
-              <Link to='/auth'>Login</Link>
+           <Link to='/auth'>Login</Link>
             </li>
           )}
           {isLoggedIn && (
-            <li>
-              {/* <Link to='/profile'>Profile</Link> */}
-              <Link to='/profile'>Inventory</Link>
-              
+            
+            <li >
+              <strong className='text-light'>Welcome  {authCtx.user.userName}</strong> <Link to='/profile'>Profile</Link>
             </li>
           )}
           {isLoggedIn && (
