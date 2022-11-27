@@ -11,13 +11,56 @@ const AuthForm = () => {
   const passwordInputRef = useRef();
 
   const authCtx = useContext(AuthContext);
-  
-  const [isLogin, setIsLogin] = useState(true);
+  // const [issignup,setIssignup]=useState(true)
+  const [isLogin, setIsLogin] = useState(true); 
   const [isLoading, setIsLoading] = useState(false);
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
+
+  // ajay code for signup start***********
+  const signuphandler=(event)=>{
+   
+    const enteredName = nameInputRef.current.value;
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
+    setIsLoading(true);
+    let url;
+
+    url =
+        'http://127.0.0.1:8000/api/signup/';
+        fetch(url, {
+          method: 'POST',
+          body: JSON.stringify({
+            name: enteredName,
+            email: enteredEmail,
+            password: enteredPassword,
+            returnSecureToken: true,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+
+        .then((res) => {
+          setIsLoading(false);
+          if (res.ok) {
+            return res.json();
+          } else {
+            return res.json().then((data) => {
+              let errorMessage = 'Authentication failed!';
+              // if (data && data.error && data.error.message) {
+              //   errorMessage = data.error.message;
+              // }
+  
+              throw new Error(errorMessage);
+            });
+          }
+        })
+
+  }
+  // code end**************************
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -32,10 +75,11 @@ const AuthForm = () => {
     if (isLogin) {
       url =
 
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDckhOP3zEBtZ48gdfTJPpyHCbNb42NDIY';
+        'http://127.0.0.1:8000/api/login/';
     } else {
-      url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDckhOP3zEBtZ48gdfTJPpyHCbNb42NDIY';
+      signuphandler()
+      // url =
+      //   'http://127.0.0.1:8000/api/signup/';
 
     }
     fetch(url, {
@@ -69,10 +113,11 @@ const AuthForm = () => {
         // const expirationTime = new Date(
         //   new Date().getTime() + +data.expiresIn * 1000
         // );
-        authCtx.login(data.idToken);
-        // authCtx.setUser({userName:data.username})
-        // sessionStorage.setItem('jwt',JSON.stringify(data.jwt))
-        // sessionStorage.setItem('name',JSON.stringify(data.username))
+        authCtx.login(data.jwt);
+        authCtx.setUser({userName:data.username})
+        sessionStorage.setItem('jwt',JSON.stringify(data.jwt))
+        sessionStorage.setItem('name',JSON.stringify(data.username))
+        sessionStorage.setItem('userID',JSON.stringify(data.userID))
         // history.replace('/profile');
       })
       .catch((err) => {
@@ -82,7 +127,7 @@ const AuthForm = () => {
 
   return (
     <section className={classes.auth}>
-      <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
+      <h1>{isLogin ? 'Login' : 'Sign up'}</h1>
       <form onSubmit={submitHandler}>
       {!isLogin && <div className={classes.control}>
             <label htmlFor='name'>Your name</label>
