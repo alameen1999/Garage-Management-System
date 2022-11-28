@@ -7,6 +7,7 @@ import AuthPage from './pages/AuthPage';
 import HomePage from './pages/HomePage';
 import AuthContext from './store/auth-context';
 import Loggedin from './pages/Loggedin';
+import EmployeeDisplay from './pages/EmployeeDisplay';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -35,6 +36,7 @@ function App() {
  <Loggedin/>
  </Route>
 )}
+  <Route path = '/employeedetails'> <EmployeeDisplay/> </Route>
 
         {!authCtx.isLoggedIn && (
           <Route path='/auth'>

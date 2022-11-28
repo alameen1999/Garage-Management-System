@@ -1,0 +1,53 @@
+.userpage {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    /* height: auto; */
+    background-image: url(.../../../../images/employeebg.jpg);
+    margin-top: 90px;
+    /* background-size: cover; */
+    padding-bottom: 12rem;
+    height: 100%;
+    width: 100%;
+    padding-top: 5rem;
+    text-align: center;
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.inside_userpage {
+    font: inherit;
+    text-align: center; 
+}
+
+.userpage input {
+    font: inherit;
+    font-size: large;
+    background-color: white;
+    padding: 0.5rem;
+    border: 1px;
+    border-radius: 25px;
+}
+
+.inside_userpage h4 {
+    font-size: small;   
+    color: rgb(237, 137, 137); 
+}
+
+.btn {
+    color: #808080;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+}
+
+.userpage h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(69, 68, 68);
+}

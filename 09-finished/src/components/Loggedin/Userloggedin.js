@@ -1,6 +1,7 @@
 import classes from './Userloggedin.module.css';
 import { FcAutomotive } from "react-icons/fc";
 import { FcExternal,  FcViewDetails,FcReadingEbook,FcCalculator,FcComboChart} from "react-icons/fc";
+import { NavLink } from 'react-router-dom';
 import AddProduct from '../Profile/AddProduct';
 const Userloggedin =()=>{
     return(
@@ -18,8 +19,10 @@ const Userloggedin =()=>{
                     <h2 className={classes.title}>JOB CARD</h2>
                 </td>
                 <td>
+                <NavLink  to = '/employeedetails'>
                     <FcReadingEbook size = '150px'   className={classes.icon}><span>Employee Details</span></FcReadingEbook>
-                    <h2  className={classes.title}>Employee Details</h2>
+                    <h2 className={classes.title}>Employee Details</h2>
+                    </NavLink>
                 </td>
 
 
