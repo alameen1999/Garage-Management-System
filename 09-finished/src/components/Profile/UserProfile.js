@@ -7,7 +7,7 @@ const UserProfile = () => {
     <section className={classes.profile}>
       <h1>Your User Profile</h1>
       {/* <ProfileForm /> */}
-      <AddProduct/>
+      {/* <AddProduct/> */}
     </section>
   );
 };

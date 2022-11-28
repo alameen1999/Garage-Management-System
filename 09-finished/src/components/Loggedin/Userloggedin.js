@@ -1,28 +1,34 @@
 import classes from './Userloggedin.module.css';
 import { FcAutomotive } from "react-icons/fc";
+
 import { FcExternal,  FcViewDetails,FcReadingEbook,FcCalculator,FcComboChart} from "react-icons/fc";
 import { NavLink } from 'react-router-dom';
 import AddProduct from '../Profile/AddProduct';
+import { Link } from 'react-router-dom';
 const Userloggedin =()=>{
+
+   
     return(
         
         <table>
                 {/* Quick Action */}
            
             <tr>
-                <td>
-                    <FcExternal  size = '150px'  className={classes.icon} ></FcExternal>
-                    <h2 className={classes.title}>Add Product</h2>
+                <td><Link to='/addProduct'>
+                    <FcExternal  size = '150px'  className={classes.icon}></FcExternal></Link>
+                    <h2 className={classes.title}>ADD PRODUCT</h2>
                 </td>
                 <td>
-                    <FcViewDetails size = '150px'  className={classes.icon}><span>Job Card</span></FcViewDetails>
+                    <Link to = '/'>
+                    <FcViewDetails size = '150px'  className={classes.icon}><span>Job Card</span></FcViewDetails></Link>
                     <h2 className={classes.title}>JOB CARD</h2>
                 </td>
                 <td>
-                <NavLink  to = '/employeedetails'>
-                    <FcReadingEbook size = '150px'   className={classes.icon}><span>Employee Details</span></FcReadingEbook>
-                    <h2 className={classes.title}>Employee Details</h2>
-                    </NavLink>
+                    
+                <Link to = '/employeeDetails'>
+                    <FcReadingEbook size = '150px'   className={classes.icon}></FcReadingEbook></Link>
+                    <h2  className={classes.title}>EMPLOYEE DETAILS</h2>
+                    
                 </td>
 
 
@@ -31,8 +37,8 @@ const Userloggedin =()=>{
 
             </tr>
             <tr>
-                <td>
-                    <FcAutomotive size = '150px' className={classes.icon}><span> Inventory</span></FcAutomotive>
+                <td><Link to='/inventory'>
+                    <FcAutomotive size = '150px' className={classes.icon}><span> Inventory</span></FcAutomotive></Link>
                     <h2 className={classes.title}>Inventory</h2>
                </td>
 

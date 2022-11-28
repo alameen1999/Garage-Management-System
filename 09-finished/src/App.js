@@ -7,6 +7,8 @@ import AuthPage from './pages/AuthPage';
 import HomePage from './pages/HomePage';
 import AuthContext from './store/auth-context';
 import Loggedin from './pages/Loggedin';
+import AddProduct from './components/Profile/AddProduct';
+import Inventory from './components/Profile/Inventory';
 import EmployeeDisplay from './pages/EmployeeDisplay';
 
 function App() {
@@ -48,6 +50,23 @@ function App() {
           <UserProfile />}
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
         </Route>
+
+        <Route path='/addProduct'>
+          {authCtx.isLoggedIn && 
+          <AddProduct/>}
+          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+        </Route>
+        <Route path='/inventory'>
+          {authCtx.isLoggedIn && 
+          <Inventory/>}
+          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+
+          
+        </Route>
+        <Route path = '/employeeDetails'> <EmployeeDisplay/> </Route>
+
+
+      
 
 
         {/* <Route path='/useraccount'>
