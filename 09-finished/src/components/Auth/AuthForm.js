@@ -20,7 +20,7 @@ const AuthForm = () => {
   };
 
   // ajay code for signup start***********
-  const signuphandler=(event)=>{
+  async function signuphandler() {
    
     const enteredName = nameInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
@@ -30,7 +30,14 @@ const AuthForm = () => {
 
     url =
         'http://127.0.0.1:8000/api/signup/';
-        fetch(url, {
+        // const myJSON = JSON.stringify({
+        //   name: enteredName,
+        //   email: enteredEmail,
+        //   password: enteredPassword,
+        //   // returnSecureToken: true,
+        // });
+        // console.log(myJSON);
+       const response = await fetch(url, {
           method: 'POST',
           body: JSON.stringify({
             name: enteredName,
@@ -41,7 +48,8 @@ const AuthForm = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-        })
+        });
+        const data = await response.json();
 
         // .then((res) => {
         //   setIsLoading(false);

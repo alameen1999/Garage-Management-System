@@ -59,6 +59,8 @@ function App() {
           {authCtx.isLoggedIn && 
           <Inventory/>}
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+
+          
         </Route>
         <Route path = '/employeeDetails'> <EmployeeDisplay/> </Route>
 

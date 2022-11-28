@@ -18,14 +18,14 @@ const Userloggedin =()=>{
                     <h2 className={classes.title}>ADD PRODUCT</h2>
                 </td>
                 <td>
-                    <Link to = '/employeeDetails'>
+                    <Link to = '/'>
                     <FcViewDetails size = '150px'  className={classes.icon}><span>Job Card</span></FcViewDetails></Link>
                     <h2 className={classes.title}>JOB CARD</h2>
                 </td>
                 <td>
                     
-                    
-                    <FcReadingEbook size = '150px'   className={classes.icon}></FcReadingEbook>
+                <Link to = '/employeeDetails'>
+                    <FcReadingEbook size = '150px'   className={classes.icon}></FcReadingEbook></Link>
                     <h2  className={classes.title}>EMPLOYEE DETAILS</h2>
                     
                 </td>
