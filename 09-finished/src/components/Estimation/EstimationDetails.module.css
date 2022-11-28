@@ -1,0 +1,32 @@
+table{
+    position: fixed;
+    top: 100px;
+    left: 180px;
+  }
+
+.title{
+  padding-bottom: 25px;
+  margin-right: 20px;
+ 
+
+}
+.textbox{
+  width: 250px;
+  margin-right: 20px;
+}
+.dropdown{
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+
+ 
+}
+.select{
+ width: 250px;
+ margin-left: 174px;
+bottom:65px;
+}
+.totalprice{
+  padding-left:200px;
+}

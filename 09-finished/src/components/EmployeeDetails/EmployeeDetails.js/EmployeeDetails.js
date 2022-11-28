@@ -4,6 +4,7 @@ import React,{Component} from 'react';
 import classes from "./EmployeeDetails.module.css";
 
 class EmployeeDetails extends Component {
+    
 
     state = {
     selectedFile: null

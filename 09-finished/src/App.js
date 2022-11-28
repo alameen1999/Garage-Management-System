@@ -10,6 +10,7 @@ import Loggedin from './pages/Loggedin';
 import AddProduct from './components/Profile/AddProduct';
 import Inventory from './components/Profile/Inventory';
 import EmployeeDisplay from './pages/EmployeeDisplay';
+import EstimationPage from './pages/EstimationPage';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -39,6 +40,7 @@ function App() {
  </Route>
 )}
   <Route path = '/employeedetails'> <EmployeeDisplay/> </Route>
+ 
 
         {!authCtx.isLoggedIn && (
           <Route path='/auth'>
@@ -60,10 +62,25 @@ function App() {
           {authCtx.isLoggedIn && 
           <Inventory/>}
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+          </Route>
 
-          
-        </Route>
-        <Route path = '/employeeDetails'> <EmployeeDisplay/> </Route>
+          <Route path='/estimationDetails'>
+          {authCtx.isLoggedIn && 
+          <EstimationPage/>}
+          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+          </Route>
+
+          <Route path='/employeeDetails'>
+          {authCtx.isLoggedIn && 
+          <EmployeeDisplay/>}
+          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+          </Route>
+
+
+
+
+        {/* <Route path = '/employeeDetails'> <EmployeeDisplay/> </Route> */}
+       
 
 
       
