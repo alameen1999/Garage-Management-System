@@ -15,17 +15,18 @@ const Userloggedin =()=>{
             <tr>
                 <td><Link to='/addProduct'>
                     <FcExternal  size = '150px'  className={classes.icon}></FcExternal></Link>
-                    <h2 className={classes.title}>Add Product</h2>
+                    <h2 className={classes.title}>ADD PRODUCT</h2>
                 </td>
                 <td>
-                    <FcViewDetails size = '150px'  className={classes.icon}><span>Job Card</span></FcViewDetails>
+                    <Link to = '/employeeDetails'>
+                    <FcViewDetails size = '150px'  className={classes.icon}><span>Job Card</span></FcViewDetails></Link>
                     <h2 className={classes.title}>JOB CARD</h2>
                 </td>
                 <td>
                     
                     
                     <FcReadingEbook size = '150px'   className={classes.icon}></FcReadingEbook>
-                    <h2  className={classes.title}>Employee Details</h2>
+                    <h2  className={classes.title}>EMPLOYEE DETAILS</h2>
                     
                 </td>
 
