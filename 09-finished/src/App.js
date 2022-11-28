@@ -9,6 +9,7 @@ import AuthContext from './store/auth-context';
 import Loggedin from './pages/Loggedin';
 import AddProduct from './components/Profile/AddProduct';
 import Inventory from './components/Profile/Inventory';
+import EmployeeDisplay from './pages/EmployeeDisplay';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -59,6 +60,7 @@ function App() {
           <Inventory/>}
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
         </Route>
+        <Route path = '/employeeDetails'> <EmployeeDisplay/> </Route>
 
 
       
