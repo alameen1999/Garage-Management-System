@@ -21,14 +21,17 @@ class EmployeeDetails extends Component {
 
     // Update the formData object
     formData.append(
-    "File",
+    "employeedetails",
     this.state.selectedFile,
     this.state.selectedFile.name
     );
 
    
-    const response = axios.post("http://localhost:8080/uploadFile",formData);
+ axios.post("http://127.0.0.1:8000/employee/addemployee/",formData).then(response=>{
     console.log(response);
+    alert(JSON.stringify(response.data.message))
+ })
+    
     };
 
     
@@ -73,7 +76,7 @@ class EmployeeDetails extends Component {
                         Upload Employee Details
                     </h3>
                     <div>
-                        <input type="file" onChange={this.onFileChange} />
+                        <input type="file" accept=".xlsx"  onChange={this.onFileChange} />
                         <button className='btn' onClick={this.onFileUpload}>
                             Upload
                         </button>

@@ -1,3 +1,7 @@
+
+
+
+
 const Inventory=()=>{
 
 
@@ -7,6 +11,7 @@ const Inventory=()=>{
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col"><strong>PRODUCT category</strong></th>
       <th scope="col"><strong>PRODUCT NAME</strong></th>
       <th scope="col"><strong>PRODUCT PRICE</strong></th>
       <th scope="col"><strong>PRODUCT QUANITY</strong></th>
