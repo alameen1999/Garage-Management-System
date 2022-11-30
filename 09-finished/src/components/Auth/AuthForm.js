@@ -1,5 +1,5 @@
 import { useState, useRef, useContext } from 'react';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import AuthContext from '../../store/auth-context';
 import classes from './AuthForm.module.css';
@@ -9,7 +9,6 @@ const AuthForm = () => {
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
   const authCtx = useContext(AuthContext);
   // const [issignup,setIssignup]=useState(true)
   const [isLogin, setIsLogin] = useState(true); 
@@ -20,7 +19,7 @@ const AuthForm = () => {
   };
 
   // ajay code for signup start***********
-  async function signuphandler() {
+  function signuphandler() {
    
     const enteredName = nameInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
@@ -37,7 +36,7 @@ const AuthForm = () => {
         //   // returnSecureToken: true,
         // });
         // console.log(myJSON);
-       const response = await fetch(url, {
+       fetch(url, {
           method: 'POST',
           body: JSON.stringify({
             name: enteredName,
@@ -48,8 +47,11 @@ const AuthForm = () => {
           headers: {
             'Content-Type': 'application/json',
           },
+        }).then(data=>{
+          setIsLoading(false);
+          setIsLogin(true);
         });
-        const data = await response.json();
+        // const data = await response.json();
 
         // .then((res) => {
         //   setIsLoading(false);
@@ -84,53 +86,54 @@ const AuthForm = () => {
       url =
 
         'http://127.0.0.1:8000/api/login/';
+        fetch(url, {
+          method: 'POST',
+          body: JSON.stringify({
+            // name: enteredName,
+            email: enteredEmail,
+            password: enteredPassword,
+            returnSecureToken: true,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then((res) => {
+            setIsLoading(false);
+            if (res.ok) {
+              return res.json();
+            } else {
+              return res.json().then((data) => {
+                let errorMessage = 'Authentication failed!';
+                // if (data && data.error && data.error.message) {
+                //   errorMessage = data.error.message;
+                // }
+    
+                throw new Error(errorMessage);
+              });
+            }
+          })
+          .then((data) => {
+            // const expirationTime = new Date(
+            //   new Date().getTime() + +data.expiresIn * 1000
+            // );
+            authCtx.login(data.jwt);
+            authCtx.setUser({userName:data.username})
+            sessionStorage.setItem('jwt',JSON.stringify(data.jwt))
+            sessionStorage.setItem('name',JSON.stringify(data.username))
+            sessionStorage.setItem('userID',JSON.stringify(data.userID))
+            // history.replace('/profile');
+          })
+          .catch((err) => {
+            alert(err.message);
+          });
     } else {
       signuphandler()
       // url =
       //   'http://127.0.0.1:8000/api/signup/';
 
     }
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        // name: enteredName,
-        email: enteredEmail,
-        password: enteredPassword,
-        returnSecureToken: true,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => {
-        setIsLoading(false);
-        if (res.ok) {
-          return res.json();
-        } else {
-          return res.json().then((data) => {
-            let errorMessage = 'Authentication failed!';
-            // if (data && data.error && data.error.message) {
-            //   errorMessage = data.error.message;
-            // }
-
-            throw new Error(errorMessage);
-          });
-        }
-      })
-      .then((data) => {
-        // const expirationTime = new Date(
-        //   new Date().getTime() + +data.expiresIn * 1000
-        // );
-        authCtx.login(data.jwt);
-        authCtx.setUser({userName:data.username})
-        sessionStorage.setItem('jwt',JSON.stringify(data.jwt))
-        sessionStorage.setItem('name',JSON.stringify(data.username))
-        sessionStorage.setItem('userID',JSON.stringify(data.userID))
-        // history.replace('/profile');
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
+    
   };
 
   return (

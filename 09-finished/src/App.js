@@ -64,23 +64,15 @@ function App() {
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
           </Route>
 
-          <Route path='/estimationDetails'>
-          {authCtx.isLoggedIn && 
-          <EstimationPage/>}
-          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
-          </Route>
 
-          <Route path='/employeeDetails'>
-          {authCtx.isLoggedIn && 
-          <EmployeeDisplay/>}
-          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
-          </Route>
-
-
-
-
-        {/* <Route path = '/employeeDetails'> <EmployeeDisplay/> </Route> */}
        
+        <Route path = '/employeeDetails'>
+        {authCtx.isLoggedIn && 
+           <EmployeeDisplay/> }
+           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+           </Route>
+           
+
 
 
       
