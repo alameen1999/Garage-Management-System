@@ -12,7 +12,11 @@ import Inventory from './components/Profile/Inventory';
 import EmployeeDisplay from './pages/EmployeeDisplay';
 import RevenueReport from './components/Profile/RevenueReport';
 import JobCard from './components/Profile/JobCard';
+
+import ChittyManagers from './components/EmployeeDetails/EmployeeDisplay/SheetDisplay';
+
 import EstimationPage from './pages/EstimationPage';
+
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -20,6 +24,10 @@ function App() {
   return (
     <Layout>
       <Switch>
+
+      {authCtx.isLoggedIn && ( 
+      <Route path="/employee/managerslist" component={ChittyManagers}/>
+      )}
 
         {/* {authCtx.isLoggedIn && ( 
         <Route path='/useraccount' exact>
