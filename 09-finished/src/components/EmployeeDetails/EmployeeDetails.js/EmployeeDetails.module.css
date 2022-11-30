@@ -11,6 +11,7 @@
 
     box-sizing: border-box;
 
+
     align-items: center;
 
     position: relative;
@@ -30,6 +31,8 @@
     text-align: center;
 
     font-family: 'Lora', serif;
+
+
 
     width: 100%;
 
@@ -73,6 +76,7 @@
 }
 
 
+
 .upload h4{
 
     color:#485c78;
@@ -84,6 +88,7 @@
     padding: 2% 5%;
 
 }
+
 
 
 
@@ -158,3 +163,4 @@
     color: #192d44;
 
 }
+

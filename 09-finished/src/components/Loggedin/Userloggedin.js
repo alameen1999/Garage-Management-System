@@ -2,6 +2,7 @@ import classes from './Userloggedin.module.css';
 import { FcAutomotive } from "react-icons/fc";
 
 import { FcExternal,  FcViewDetails,FcReadingEbook,FcCalculator,FcComboChart} from "react-icons/fc";
+import { NavLink } from 'react-router-dom';
 import AddProduct from '../Profile/AddProduct';
 import { Link } from 'react-router-dom';
 const Userloggedin =()=>{
@@ -42,8 +43,11 @@ const Userloggedin =()=>{
                </td>
 
                 <td>
-                    
+                    <Link to = '/estimationDetails'>
                     <FcCalculator size = '150px'  className={classes.icon}></FcCalculator>
+                    </Link>
+                    
+                    
                     <h2 className={classes.title}>Estimation</h2>
                
                 </td>

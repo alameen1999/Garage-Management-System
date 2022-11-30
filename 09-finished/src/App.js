@@ -12,7 +12,11 @@ import Inventory from './components/Profile/Inventory';
 import EmployeeDisplay from './pages/EmployeeDisplay';
 import RevenueReport from './components/Profile/RevenueReport';
 import JobCard from './components/Profile/JobCard';
+
 import ChittyManagers from './components/EmployeeDetails/EmployeeDisplay/SheetDisplay';
+
+import EstimationPage from './pages/EstimationPage';
+
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -66,9 +70,10 @@ function App() {
           {authCtx.isLoggedIn &&
             <Inventory />}
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+          </Route>
 
 
-        </Route>
+        
         <Route path='/employeeDetails'>
           {authCtx.isLoggedIn &&
             <EmployeeDisplay />}
@@ -84,6 +89,12 @@ function App() {
         <Route path='/jobcard'>
           {authCtx.isLoggedIn &&
             <JobCard/>}
+          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+        </Route>
+
+        <Route path='/estimationDetails'>
+          {authCtx.isLoggedIn &&
+            <EstimationPage/>}
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
         </Route>
 
