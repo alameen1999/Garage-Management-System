@@ -19,7 +19,7 @@ const Userloggedin =()=>{
                     <h2 className={classes.title}>ADD PRODUCT</h2>
                 </td>
                 <td>
-                    <Link to = '/'>
+                    <Link to = 'jobcard/'>
                     <FcViewDetails size = '150px'  className={classes.icon}><span>Job Card</span></FcViewDetails></Link>
                     <h2 className={classes.title}>JOB CARD</h2>
                 </td>
@@ -52,8 +52,8 @@ const Userloggedin =()=>{
                
                 </td>
 
-                <td>
-                    <FcComboChart  size = '150px' className={classes.icon}><span>Revenue Report</span></FcComboChart>
+                <td><Link to='/revenuereport'>
+                    <FcComboChart  size = '150px' className={classes.icon}><span>Revenue Report</span></FcComboChart></Link>
                    <h2 className={classes.title}> Revenue Report</h2>
                 </td>
             </tr>
