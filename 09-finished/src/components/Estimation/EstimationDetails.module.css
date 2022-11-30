@@ -1,0 +1,65 @@
+table{
+  position: fixed;
+  top: 100px;
+  left: 70px;
+}
+.secondtable{
+  margin-bottom: 400px;
+}
+.border
+{
+  margin-top: 250px;
+  margin-right: 0px;
+}
+h4{
+  padding-right: 150px;
+}
+
+.title{
+padding-bottom: 25px;
+margin-right: 20px;
+
+
+}
+.textbox{
+width: 250px;
+margin-right: 20px;
+}
+.dropdown{
+margin-bottom: 40px;
+display: flex;
+flex-direction: column;
+margin-right: 20px;
+
+
+}
+.select{
+width: 250px;
+margin-left: 174px;
+bottom:65px;
+}
+.totalprice{
+padding-left:200px;
+}
+/* .rectangle {
+display: inline-block;
+width: 1190px;
+height: 25px;
+background: black;
+} */
+.secondtitle{
+margin-bottom: 300px;
+
+}
+.servicesavailable{
+margin-bottom: 400px;
+}
+.button{
+margin-top: 50px;
+margin-right: 200px;
+display: flexbox;
+
+
+
+
+}

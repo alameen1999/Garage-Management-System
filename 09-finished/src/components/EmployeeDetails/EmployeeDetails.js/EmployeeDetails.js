@@ -4,6 +4,7 @@ import React,{Component} from 'react';
 import classes from "./EmployeeDetails.module.css";
 
 class EmployeeDetails extends Component {
+    
 
     state = {
     selectedFile: null
@@ -62,7 +63,7 @@ class EmployeeDetails extends Component {
             return (
                 <div className={classes.inside_userpage}>
                     <br />
-                    <h4>Choose a file before Pressing the Upload button</h4>
+                    {/* <h4>Choose a file before Pressing the Upload button</h4> */}
                 </div>
             );
         }
@@ -77,9 +78,12 @@ class EmployeeDetails extends Component {
                     </h3>
                     <div>
                         <input type="file" accept=".xlsx"  onChange={this.onFileChange} />
-                        <button className='btn' onClick={this.onFileUpload}>
+                        <div>
+                        <button className={classes.btn} onClick={this.onFileUpload}>
                             Upload
                         </button>
+                        </div>
+                        
                     </div>
                     {this.fileData()}
                 </div>
