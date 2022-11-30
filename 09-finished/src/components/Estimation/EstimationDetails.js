@@ -125,12 +125,17 @@ const EstimationDetails = () => {
 
 
 
+
+
+
             <th>
             <label className={classes.title}>Enter Engine Number</label>
             <input className={classes.textbox} placeholder="Engine Number" value={engineno} onChange={(e) => setEngineno(e.target.value)}></input>
             </th>
            
          
+
+
            <th>
            <label className={classes.title}>Enter Chase Number</label>
             <input className={classes.textbox} placeholder="Chase Number" value={chaseno} onChange={(e) => setChaseno(e.target.value)}></input>
@@ -142,6 +147,7 @@ const EstimationDetails = () => {
             {/* <input type="date" className={classes.textbox}  value={estimationdate} onChange={(e) => console.log(e)}></input>  */}
             <DatePicker selected={estimationdate} onChange={(date) => setEstimationdate(date)} />
             </th>
+
 
             <th>
            
