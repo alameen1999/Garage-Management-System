@@ -10,6 +10,8 @@ import Loggedin from './pages/Loggedin';
 import AddProduct from './components/Profile/AddProduct';
 import Inventory from './components/Profile/Inventory';
 import EmployeeDisplay from './pages/EmployeeDisplay';
+import RevenueReport from './components/Profile/RevenueReport';
+import JobCard from './components/Profile/JobCard';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -18,7 +20,7 @@ function App() {
     <Layout>
       <Switch>
 
-      {/* {authCtx.isLoggedIn && ( 
+        {/* {authCtx.isLoggedIn && ( 
         <Route path='/useraccount' exact>
           <Loggedin/>
         </Route>
@@ -26,18 +28,18 @@ function App() {
 
 
 
-        {!authCtx.isLoggedIn && ( 
-        <Route path='/' exact>
-          <HomePage />
-        </Route>
+        {!authCtx.isLoggedIn && (
+          <Route path='/' exact>
+            <HomePage />
+          </Route>
         )}
 
-{authCtx.isLoggedIn && ( 
+        {authCtx.isLoggedIn && (
 
-<Route path='/' exact>
- <Loggedin/>
- </Route>
-)}
+          <Route path='/' exact>
+            <Loggedin />
+          </Route>
+        )}
 
         {!authCtx.isLoggedIn && (
           <Route path='/auth'>
@@ -45,32 +47,48 @@ function App() {
           </Route>
         )}
         <Route path='/profile'>
-          {authCtx.isLoggedIn && 
-          <UserProfile />}
+          {authCtx.isLoggedIn &&
+            <UserProfile />}
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
         </Route>
 
         <Route path='/addProduct'>
-          {authCtx.isLoggedIn && 
-          <AddProduct/>}
+          {authCtx.isLoggedIn &&
+            <AddProduct />}
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
         </Route>
         <Route path='/inventory'>
-          {authCtx.isLoggedIn && 
-          <Inventory/>}
+          {authCtx.isLoggedIn &&
+            <Inventory />}
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
 
 
         </Route>
-        <Route path = '/employeeDetails'>
-        {authCtx.isLoggedIn && 
-           <EmployeeDisplay/> }
-           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
-           </Route>
-           
+        <Route path='/employeeDetails'>
+          {authCtx.isLoggedIn &&
+            <EmployeeDisplay />}
+          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+        </Route>
+
+        <Route path='/revenuereport'>
+          {authCtx.isLoggedIn &&
+            <RevenueReport />}
+          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+        </Route>
+
+        <Route path='/jobcard'>
+          {authCtx.isLoggedIn &&
+            <JobCard/>}
+          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+        </Route>
+
+        
 
 
-      
+
+
+
+
 
 
         {/* <Route path='/useraccount'>

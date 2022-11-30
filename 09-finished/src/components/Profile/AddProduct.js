@@ -94,7 +94,7 @@ const AddProduct = () => {
 
             <button class="btn btn-warning" >Add product</button>
              
-            <button class="btn btn-success" onClick={returntohome} >Back To Home</button>
+            {/* <button class="btn btn-success" onClick={returntohome} >Back To Home</button> */}
           </form>
         
       </div>
