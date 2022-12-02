@@ -44,7 +44,7 @@ const AddProduct = () => {
     })
   }
   const fetchData = async () => {
-    const albums = await (await Dummy.get('category')).data
+    const albums = await (await Dummy.get('/product/category')).data
     setItems(albums.slice(0, 8).map((data) => {
       console.log();
       return { value: data.id, label: data.categoryname }
