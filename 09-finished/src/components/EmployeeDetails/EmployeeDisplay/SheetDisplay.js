@@ -6,7 +6,7 @@ import classes from './SheetDisplay.module.css';
 
 const ChittyManagers = () => {
   useEffect(() => {
-    axios.get(`https://auth-e08be-default-rtdb.firebaseio.com/movies.json`)
+    axios.get(`http://127.0.0.1:8000/employee/displayemployee/${sessionStorage.getItem('userID')}`)
       .then(response => {
         setProductDetails(response.data)
         setOrgData(response.data)
@@ -39,11 +39,13 @@ const ChittyManagers = () => {
   // }
   return (
     <div className={classes.profile}>
-      <input type="text" className="mt-5" ref={searchInpRef} onChange={handleSearch}/>
+      <h3>EMPLOYEE DATA</h3>
+      <input type="text" placeholder="Search your employee..." className="mt-5" ref={searchInpRef} onChange={handleSearch}/>
       <table class="table table-striped position-relative start-0">
         <thead>
           <tr>
             {/* <th scope="col">#</th> */}
+            <th scope="col"><strong>NO</strong></th>
             <th scope="col"><strong>EMPCODE</strong></th>
             <th scope="col"><strong>NAME</strong></th>
             <th scope="col"><strong>EMAIL</strong></th>

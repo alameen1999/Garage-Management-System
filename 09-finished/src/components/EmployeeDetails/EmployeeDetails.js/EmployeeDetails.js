@@ -24,8 +24,8 @@ const Manager = () => {
         setState(e.target.files);
 
         const formData = new FormData();
-        formData.append('file',selectedFile);
-        fetch('http://localhost:8080/api/managers/upload', {method: 'post',body: formData})
+        formData.append('employeedetails',selectedFile);
+        fetch('http://127.0.0.1:8000/employee/addemployee/', {method: 'post',body: formData})
         .then(res => {
             if (res.ok) {
                 console.log(res.data);
@@ -38,6 +38,7 @@ const Manager = () => {
     const fileData = () => {
         if (selectedFile) {
             return (
+                
                 <div className={classes.detailsShown}>
                     <h6>File Details:</h6>
                     <p>File Name: {selectedFile.name}</p>
@@ -79,15 +80,17 @@ const Manager = () => {
                         </button>
                         </div>
                         
-                    </div>
+                    
                     <div className={classes.filedata}>{fileData()}</div>
                     <Link to="/employee/managerslist">
                         <button className={classes.button}><span>Show</span></button>
                     </Link>
-                    
+                    </div>
                 </div>
-            </div>
+            
+            
         );
+        
     }
 
 

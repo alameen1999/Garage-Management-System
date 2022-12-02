@@ -120,6 +120,7 @@ const AuthForm = () => {
             authCtx.login(data.jwt);
             authCtx.setUser({userName:data.username})
             sessionStorage.setItem('jwt',JSON.stringify(data.jwt))
+            // cookies.setItem('jwt',JSON.stringify(data.jwt))
             sessionStorage.setItem('name',JSON.stringify(data.username))
             sessionStorage.setItem('userID',JSON.stringify(data.userID))
             // history.replace('/profile');

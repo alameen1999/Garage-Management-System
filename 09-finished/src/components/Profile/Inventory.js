@@ -5,18 +5,37 @@ import classes from './UserProfile.module.css';
 
 
 const Inventory = () => {
+  let httpClient =axios.create({
+    baseURL: 'http://127.0.0.1:8000/product/',
+    headers: {
+      Authorization : `Bearer ${sessionStorage.getItem('jwt')}`
+      }
+  })
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/product/displayproduct/${sessionStorage.getItem('userID')}`)
-      .then(response => {
+    // axios.get('http://127.0.0.1:8000/product/displayproduct/')
+    //   .then(response => {
+    //     setProductDetails(response.data)
+    //     setOrgData(response.data)
+    //   })
+    httpClient.get('displayproduct/')
+    .then(response => {
+      console.log(response.data);
+      if(response.data?.detail == "Unauthenticated!"){
+        alert("Session expired Plz login again")
+      }
+      else{
         setProductDetails(response.data)
         setOrgData(response.data)
-      })
+      }
+          
+        })
   }, []
   )
   const [prodOrData,setOrgData] = useState([])
   const [productDetails, setProductDetails] = useState([])
   const searchInpRef = useRef();
   const [status,setStatus] = useState(true)
+  const [inputValue, setInputValue] =useState();
   const [indexer,setindexer] = useState('')
   const handleSearch =()=>{
     if(searchInpRef.current.value.length >= 3){
@@ -27,6 +46,11 @@ const Inventory = () => {
       setProductDetails(prodOrData)
     }
   }
+  const handleChangeText =(event)=>{
+
+    console.log(event.target.value);
+    setInputValue(event.target.value)
+  }
   const handleEdit=(i,prodId)=>{
     setStatus(false)
     setindexer(i)
@@ -35,11 +59,24 @@ const Inventory = () => {
     console.log(prodId);
     setStatus(true)
     setindexer(i)
+    axios.put(`http://127.0.0.1:8000/product/updateproduct/${prodId}`,{
+      name:productDetails[i].productName,
+      price:productDetails[i].productPrice,
+      quantity:inputValue
+    })
+    .then(res=>{
+      alert("Product Updated success")
+    })
     // call the api by passing 
+
+  }
+
+  const printdetails=()=>{
+    window.open(`http://127.0.0.1:8000/product/printproductdetails/${sessionStorage.getItem('userID')}`,'_blank','noopener,noreferrer')
   }
   return (
     <div className={classes.profile}>
-      <input type="text" className="mt-5" ref={searchInpRef} onChange={handleSearch}/>
+      <input type="text"placeholder="Search.." className="mt-5" ref={searchInpRef} onChange={handleSearch}/>
       <table class="table table-striped position-relative start-0">
         <thead>
           <tr>
@@ -57,7 +94,7 @@ const Inventory = () => {
               <th scope="row">{i + 1}</th>
               <td>{object.productName}</td>
               <td>{object.productPrice}</td>
-              <td><input disabled={status || i != indexer} type="number" defaultValue={object.productQuantity}/></td>
+              <td><input disabled={status || i != indexer} type="number" defaultValue={object.productQuantity} onChange={(event)=>handleChangeText(event)}/></td>
               <td>
                 
                   {
@@ -80,8 +117,15 @@ const Inventory = () => {
 
           })}
         </tbody>
+
+        <div><button class="btn btn-success" onClick={printdetails}>PRINT PRODUCT DETAILS</button></div>
+        
       </table>
+      
+
+      
     </div>
+    
 
   )
 

@@ -29,22 +29,22 @@ const EstimationDetails = () => {
     
     const fetchData = async() => {
       const albums = await (await Dummy.get('/albums')).data
-      setServices(albums.slice(0,5).map((data) => {
-       return {value:data.id,label:data.title}
+      setServices(albums.map((data) => {
+       return {value:data.id,label:data.services}
       }))
       setSelectedValue(services[0])
     }
-  // const data = [
-  //   { services: "Oil and oil filter check and replacement", id: 1, price: 250 },
-  //   { services: "Brake fluid check and top up", id: 2, price: 150 },
-  //   { services: "Coolant check and top up", id: 3, price: 200 },
-  //   { services: "Windscreen wash check and top up", id: 4, price: 150 },
-  //   { services: "Battery check", id: 5, price: 100 },
-  //   { services: "Charging system check", id: 6, price: 150 },
-  //   { services: "Tyre tread and pressure check", id: 7, price: 50 },
-  //   { services: "Suspension check", id: 8, price: 150 },
-  //   { services: "Windscreen wipers check", id: 9, price: 120 }
-  // ];
+  const data = [
+    { services: "Oil and oil filter check and replacement", id: 1, price: 250 },
+    { services: "Brake fluid check and top up", id: 2, price: 150 },
+    { services: "Coolant check and top up", id: 3, price: 200 },
+    { services: "Windscreen wash check and top up", id: 4, price: 150 },
+    { services: "Battery check", id: 5, price: 100 },
+    { services: "Charging system check", id: 6, price: 150 },
+    { services: "Tyre tread and pressure check", id: 7, price: 50 },
+    { services: "Suspension check", id: 8, price: 150 },
+    { services: "Windscreen wipers check", id: 9, price: 120 }
+  ];
 
   const [estimation, setEstimation] = useState([]);
   const [name, setName] = useState('');
@@ -68,17 +68,14 @@ const EstimationDetails = () => {
  const postEstimation = (e) => {
   e.preventDefault();
   alert('New User Registered')
-  Axios.post('https://jsonplaceholder.typicode.com/posts',{
-    name,
-    phoneno,
-    vehicleno,
-    vehicletype,
-    engineno,
-    chaseno,
-    estimationdate
-
-
-
+  Axios.post('http://127.0.0.1:8000/estimate/addcustomer/',{
+      vehicleNumber: vehicleno,
+      name: name,
+      mobileNumber: phoneno,
+      vehicleType: vehicletype,
+      engineNumber:  engineno,
+      chaseNumber: chaseno,
+      userId: sessionStorage.getItem('userID')
   }).then(res => console.log('Posting data', res)).catch(err => console.log(err))
  }
 
@@ -91,7 +88,7 @@ const EstimationDetails = () => {
   };
 
   return (
-    <div>
+    <div >
       {/* <h4>Register New Customer</h4> */}
       <table>
         <tr>
@@ -142,16 +139,12 @@ const EstimationDetails = () => {
            </th>
            </tr>
            <tr>
-            <th>
-             <label className={classes.title}> Select Date of Estimation</label> 
-            {/* <input type="date" className={classes.textbox}  value={estimationdate} onChange={(e) => console.log(e)}></input>  */}
-            <DatePicker selected={estimationdate} onChange={(date) => setEstimationdate(date)} />
-            </th>
+            
 
 
             <th>
            
-           <button className={classes.button} onClick={postEstimation} >Add A new Customer</button>
+           <button  className={classes.button} onClick={postEstimation} >SUBMIT</button>
            
            </th>
            </tr>
@@ -161,6 +154,12 @@ const EstimationDetails = () => {
 
            <tr>
 
+            <th>
+              <label className={classes.title}> Select Date of Estimation</label> 
+            <input type="date" className={classes.textbox}  value={estimationdate} onChange={(e) => console.log(e)}></input> 
+            <DatePicker selected={estimationdate} onChange={(date) => setEstimationdate(date)} />
+            </th> 
+
            <th>
             <label className={classes.title}>Enter Vehicle Number</label>
             <input className={classes.textbox} placeholder="KL XX XXXX"></input>
@@ -169,8 +168,8 @@ const EstimationDetails = () => {
             <label className={classes.title}>Select Services Available</label>
             <Multiselect className={classes.textbox}
               options={services}
-              // value={selectedValue}
-              displayValue={selectedService}
+              // value={data}
+              displayValue={services}
               // onChange={handleChange}
               onSelect={(view) => addService(view)}
             />
