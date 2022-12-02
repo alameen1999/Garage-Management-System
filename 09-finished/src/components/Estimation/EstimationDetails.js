@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
 import classes from './EstimationDetails.module.css';
 import "react-datepicker/dist/react-datepicker.css";
+import makeAnimated from 'react-select/animated';
+
 import Axios from 'axios';
 import Dummy from '../../api/Dummy';
 
@@ -14,9 +16,29 @@ const options = [
   { value: "HMV", label: "HMV" }
 ];
 
+const data = [
+  { services: "Oil and oil filter check and replacement", id: 1, price: 250 },
+  { services: "Brake fluid check and top up", id: 2, price: 150 },
+  { services: "Coolant check and top up", id: 3, price: 200 },
+  { services: "Windscreen wash check and top up", id: 4, price: 150 },
+  { services: "Battery check", id: 5, price: 100 },
+  { services: "Charging system check", id: 6, price: 150 },
+  { services: "Tyre tread and pressure check", id: 7, price: 50 },
+  { services: "Suspension check", id: 8, price: 150 },
+  { services: "Windscreen wipers check", id: 9, price: 120 }
+];
+
 const EstimationDetails = () => {
   const [services, setServices] = useState([]);
   const [selectedValue, setSelectedValue] = useState(null);
+
+  // const options = data.map((data) => {
+  //   return {value:data.id,label:data.services}
+  //  })
+   
+
+  //  setServices(options)
+      // setSelectedValue(services[0])
 
   useEffect(() => {
     fetchData()   },[] 
@@ -28,23 +50,14 @@ const EstimationDetails = () => {
   
     
     const fetchData = async() => {
-      const albums = await (await Dummy.get('/albums')).data
-      setServices(albums.map((data) => {
-       return {value:data.id,label:data.services}
+      const services = await (await Dummy.get('/estimation/getservices')).data
+      setServices(services.map((data) => {
+       return {i:data.id,services:data.services}
       }))
       setSelectedValue(services[0])
+      console.log(services)
     }
-  const data = [
-    { services: "Oil and oil filter check and replacement", id: 1, price: 250 },
-    { services: "Brake fluid check and top up", id: 2, price: 150 },
-    { services: "Coolant check and top up", id: 3, price: 200 },
-    { services: "Windscreen wash check and top up", id: 4, price: 150 },
-    { services: "Battery check", id: 5, price: 100 },
-    { services: "Charging system check", id: 6, price: 150 },
-    { services: "Tyre tread and pressure check", id: 7, price: 50 },
-    { services: "Suspension check", id: 8, price: 150 },
-    { services: "Windscreen wipers check", id: 9, price: 120 }
-  ];
+ 
 
   const [estimation, setEstimation] = useState([]);
   const [name, setName] = useState('');
@@ -56,18 +69,14 @@ const EstimationDetails = () => {
   const [estimationdate, setEstimationdate] = useState('');
   const [startDate, setStartDate] = useState(new Date());
 
+  
 
-//  useEffect(() => {
-//   Axios.get('https://jsonplaceholder.typicode.com/posts')
-//   .then(res => {
-//     console.log("Getting from", res.estimation)
-//     setEstimation(res.estimation)
-//   }).catch(err => console.log(err))
-//  }, [])
+
+
 
  const postEstimation = (e) => {
   e.preventDefault();
-  alert('New User Registered')
+  
   Axios.post('http://127.0.0.1:8000/estimate/addcustomer/',{
       vehicleNumber: vehicleno,
       name: name,
@@ -166,22 +175,22 @@ const EstimationDetails = () => {
             </th>
            <th>
             <label className={classes.title}>Select Services Available</label>
-            <Multiselect className={classes.textbox}
-              options={services}
-              // value={data}
-              displayValue={services}
-              // onChange={handleChange}
-              onSelect={(view) => addService(view)}
-            />
+
+
+            <Select className={classes.textbox}
+            isMulti
+            name="services"
+            options={services}
+            value={services}
+            onChange={handleChange}
+              />
             </th>
 
             <th>
             <label className={classes.title}>Select Products Available</label>
-            <Multiselect className={classes.textbox}
-              options={services}
-              // value={selectedValue}
-              displayValue={selectedService}
-              // onChange={handleChange}
+            <Select className={classes.textbox}
+            isMulti
+             
               onSelect={(view) => addService(view)}
             />
             </th>

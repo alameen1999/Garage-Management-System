@@ -1,9 +1,7 @@
 import { useState, useRef, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import AuthContext from '../../store/auth-context';
 import classes from './AuthForm.module.css';
-
 const AuthForm = () => {
   // const history = useHistory();
   const nameInputRef = useRef();
@@ -13,11 +11,9 @@ const AuthForm = () => {
   // const [issignup,setIssignup]=useState(true)
   const [isLogin, setIsLogin] = useState(true); 
   const [isLoading, setIsLoading] = useState(false);
-
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
-
   // ajay code for signup start***********
   function signuphandler() {
    
@@ -26,7 +22,6 @@ const AuthForm = () => {
     const enteredPassword = passwordInputRef.current.value;
     setIsLoading(true);
     let url;
-
     url =
         'http://127.0.0.1:8000/api/signup/';
         // const myJSON = JSON.stringify({
@@ -52,7 +47,6 @@ const AuthForm = () => {
           setIsLogin(true);
         });
         // const data = await response.json();
-
         // .then((res) => {
         //   setIsLoading(false);
         //   if (res.ok) {
@@ -63,28 +57,23 @@ const AuthForm = () => {
         //       // if (data && data.error && data.error.message) {
         //       //   errorMessage = data.error.message;
         //       // }
-  
+ 
         //       throw new Error(errorMessage);
         //     });
         //   }
         // })
-
   }
   // code end**************************
-
   const submitHandler = (event) => {
     event.preventDefault();
     // const enteredName = nameInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-
     // optional: Add validation
-
     setIsLoading(true);
     let url;
     if (isLogin) {
       url =
-
         'http://127.0.0.1:8000/api/login/';
         fetch(url, {
           method: 'POST',
@@ -108,7 +97,7 @@ const AuthForm = () => {
                 // if (data && data.error && data.error.message) {
                 //   errorMessage = data.error.message;
                 // }
-    
+   
                 throw new Error(errorMessage);
               });
             }
@@ -132,11 +121,9 @@ const AuthForm = () => {
       signuphandler()
       // url =
       //   'http://127.0.0.1:8000/api/signup/';
-
     }
-    
+   
   };
-
   return (
     <section className={classes.auth}>
       <h1>{isLogin ? 'Login' : 'Sign up'}</h1>
@@ -175,5 +162,4 @@ const AuthForm = () => {
     </section>
   );
 };
-
 export default AuthForm;
