@@ -1,65 +1,160 @@
-.userpage {
-    font-family: 'Montserrat', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;700&family=Montserrat&family=Teko:wght@500&display=swap');
+
+
+
+
+.manage{
+
+    /* background-image: url("../../../assets/images/foremanbg.jpg"); */
+
+    text-align:center;
+
     box-sizing: border-box;
-    /* height: auto; */
-    /* background-image: url(.../../../../images/employeebg.jpg); */
-    margin-top: 90px;
-    /* background-size: cover; */
-    padding-bottom: 12rem;
-    height: 100%;
-    width: 100%;
-    padding-top: 5rem;
+
+    align-items: center;
+
+    position: relative;
+
+    height: 100vh;
+
+}
+
+
+
+.manage h1{
+
+    margin-top:20px;
+
+    color:#ffffff;
+
     text-align: center;
-    background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-h3{
-    margin-bottom: 50px;
-    margin-right: 70px;
-}
 
-.inside_userpage {
-    font: inherit;
-    text-align: center; 
-}
+    font-family: 'Lora', serif;
 
-.userpage input {
-    font: inherit;
-    font-size: large;
-    background-color: black;
-    padding: 0.5rem;
-    border: 1px;
-    border-radius: 25px;
-    margin-right: 55px;
+    width: 100%;
+
+    height: 80px;
+
+    padding: 2% 5%;
+
+    font-size: 24px;
+
+    top: 0;
+
+    margin-top: 0;
+
+    background-color: #192d44;
+
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.75);
+
 }
 
-/* .inside_userpage h4 {
-    font-size: small;   
-    color: rgb(237, 137, 137); 
-} */
 
-.btn {
-   
-    cursor: pointer;
-    border-radius: 25px;
-    background-color: black;
+
+
+.upload
+
+{
+
+    text-align: center;
+
+    box-shadow: 0 0px 10px rgba(40, 40, 40, 0.75);
+
+    border-radius: 1cm;
+
+    padding: 20px;
+
+    width: 50%;
+
+    height: 60vh;
+
+    margin: 7% 25%;
+
+}
+
+
+.upload h4{
+
+    color:#485c78;
+
+    text-align: center;
+
+    font-family: 'Lora', serif;
+
+    padding: 2% 5%;
+
+}
+
+
+
+.upload input{
+
+    padding: 3% 3%;
+
+    margin: 5px 5px;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    background-color: #a9b1bc;
+
+    border-radius: 20px;
+
+}
+
+
+
+.upload button{
+
+    background-color: #192d44;
+
+    padding: 3% 3%;
+
+    margin: 5px 5px;
+
     color: white;
-    margin-top: 50px;
-    width: 100px;
-    height: 40px;
-    margin-right: 55px;
-    
-    
-   
-}
-.btn:hover {
-    background-color: rgb(84, 81, 81);
-    border: none
+
+    border: none;
+
+    font-family: 'Lora', serif;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    width: 150px;
+
+    border-radius: 20px;
+
 }
 
-/* .userpage h1 {
-    font-size: 50px;
-    font-weight: bold;
-    color: rgb(69, 68, 68);
-} */
+
+
+.upload button:hover{
+
+    background-color: #3457a9;
+
+    padding: 3% 3%;
+
+    margin: 5px 5px;
+
+    border: none;
+
+    font-family: 'Lora', serif;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+}
+
+
+
+.filedata{
+
+    font-family: 'Lora', serif;
+
+    color: #192d44;
+
+}

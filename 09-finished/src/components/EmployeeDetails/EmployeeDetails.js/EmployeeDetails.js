@@ -1,95 +1,206 @@
-import axios from 'axios';
-import React,{Component} from 'react';
-// import Button from '../UI/Button/Button';
-import classes from "./EmployeeDetails.module.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import classes from './EmployeeDetails.module.css';
+// import ChittyManagers from '../EmployeeSheet/SheetDisplay';
+// import { Route } from 'react-router-dom';
 
-class EmployeeDetails extends Component {
-    
 
-    state = {
-    selectedFile: null
-    };
-        onFileChange = event => {
-  
-    this.setState({ selectedFile: event.target.files[0] });
 
-    };
+
+
+const Manager = () => {
    
-    onFileUpload = () => {
+    const [selectedFile,setState] = useState(null);
 
-    // Create an object of formData
-    let formData = new FormData();
-
-    // Update the formData object
-    formData.append(
-    "employeedetails",
-    this.state.selectedFile,
-    this.state.selectedFile.name
-    );
-
-   
- axios.post("http://127.0.0.1:8000/employee/addemployee/",formData).then(response=>{
-    console.log(response);
-    alert(JSON.stringify(response.data.message))
- })
-    
+    // On file select (from the pop up)
+    const onFileChange = event => {
+    // Update the state
+        setState(event.target.files[0]);
     };
 
-    
-    // File content to be displayed after
-    // file upload is complete
-    fileData = () => {
 
-    if (this.state.selectedFile) {
+    const onFileUpload = (e) => {
+        e.preventDefault();
+        setState(e.target.files);
+
+        const formData = new FormData();
+        formData.append('employeedetails',selectedFile);
+        fetch('http://127.0.0.1:8000/employee/addemployee/', {method: 'post',body: formData})
+        .then(res => {
+            if (res.ok) {
+                console.log(res.data);
+                alert("File uploaded successfully.")
+            }
+        });
+    };
+
+   
+    const fileData = () => {
+        if (selectedFile) {
             return (
-                <div className={classes.inside_userpage}>
-                    <div>
-                        <h2>File Details:</h2>
-                        <p>File Name: {this.state.selectedFile.name}</p>
-
-                        <p>File Type: {this.state.selectedFile.type}</p>
-
-                        <p>
-                            Last Modified:{" "}
-                            {this.state.selectedFile.lastModifiedDate.toDateString()}
-                        </p>
-
-                     </div>
+                
+                <div className={classes.detailsShown}>
+                    <h6>File Details:</h6>
+                    <p>File Name: {selectedFile.name}</p>
+                    <p>
+                        Last Modified:{" "}
+                        {selectedFile.lastModifiedDate.toDateString()}
+                    </p>
                 </div>
-            
             );
-    } else {
-
+        } else {
             return (
-                <div className={classes.inside_userpage}>
+                <div>
                     <br />
-                    {/* <h4>Choose a file before Pressing the Upload button</h4> */}
+
+                    <h6>Choose before Pressing the Upload button</h6>
+
+                  
                 </div>
             );
         }
     };
-
-    render() {
+   
         return (
-            <div className={classes.userpage}>
-                <div>
-                    <h3>
-                        Upload Employee Details
-                    </h3>
+            <div className={classes.manage}>
+                <h1 className={classes.header}>
+                    Employee Data
+                </h1>
+                <div className={classes.upload}>
+                    <h4>
+                        Upload employee details
+                    </h4>
                     <div>
-                        <input type="file" accept=".xlsx"  onChange={this.onFileChange} />
-                        <div>
-                        <button className={classes.btn} onClick={this.onFileUpload}>
-                            Upload
+
+                        <br></br>
+                        <input type="file" onChange={onFileChange} />
+                        <button onClick={onFileUpload}>
+                            Upload!
+                       
                         </button>
                         </div>
                         
+                    
+                    <div className={classes.filedata}>{fileData()}</div>
+                    <Link to="/employee/managerslist">
+                        <button className={classes.button}><span>Show</span></button>
+                    </Link>
                     </div>
-                    {this.fileData()}
                 </div>
-                </div>
+            
+            
         );
+        
     }
-}
 
-export default EmployeeDetails;
+
+export default Manager;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

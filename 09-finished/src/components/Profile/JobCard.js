@@ -63,9 +63,10 @@ const JobCard = () => {
                             <th scope="row">{customerDetails.vehicleNumber}</th>
                             <td>{customerDetails.name}</td>
                             <td>{customerDetails.mobileNumber}</td>
-                            <td>{customerDetails.vehicleNumber}</td>
+                            <td>{customerDetails.vehicleType}</td>
                             <td>{customerDetails.engineNumber}</td>
                             <td>{customerDetails.chaseNumber}</td>
+                            
                             
                         </tr>
                         

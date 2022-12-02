@@ -39,7 +39,7 @@ const Userloggedin =()=>{
             <tr>
                 <td><Link to='/inventory'>
                     <FcAutomotive size = '150px' className={classes.icon}><span> Inventory</span></FcAutomotive></Link>
-                    <h2 className={classes.title}>Inventory</h2>
+                    <h2 className={classes.title}>INVENTORY</h2>
                </td>
 
                 <td>
@@ -48,16 +48,17 @@ const Userloggedin =()=>{
                     </Link>
                     
                     
-                    <h2 className={classes.title}>Estimation</h2>
+                    <h2 className={classes.title}>ESTIMATION</h2>
                
                 </td>
 
                 <td><Link to='/revenuereport'>
                     <FcComboChart  size = '150px' className={classes.icon}><span>Revenue Report</span></FcComboChart></Link>
-                   <h2 className={classes.title}> Revenue Report</h2>
+                   <h2 className={classes.title}> REVENUE REPORT</h2>
                 </td>
             </tr>
         </table>
+        
     )
 
 }
