@@ -8,7 +8,7 @@ const Inventory = () => {
   let httpClient =axios.create({
     baseURL: 'http://127.0.0.1:8000/product/',
     headers: {
-      Authorization : `Bearer ${sessionStorage.getItem('jwt')}`
+      Authorization : `Bearer ${JSON.parse( sessionStorage.getItem('jwt'))}`
       }
   })
   useEffect(() => {

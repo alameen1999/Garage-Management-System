@@ -50,7 +50,8 @@ const EstimationDetails = () => {
   
     
     const fetchData = async() => {
-      const services = await (await Dummy.get('/estimation/getservices')).data
+      const services =await(await Axios.get('http://127.0.0.1:8000/estimation/getservices')).data
+      console.log(services)
       setServices(services.map((data) => {
        return {i:data.id,services:data.services}
       }))
