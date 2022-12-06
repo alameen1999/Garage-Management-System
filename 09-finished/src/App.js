@@ -16,6 +16,7 @@ import JobCard from './components/Profile/JobCard';
 import ChittyManagers from './components/EmployeeDetails/EmployeeDisplay/SheetDisplay';
 
 import EstimationPage from './pages/EstimationPage';
+import Invoice from './components/Profile/invoice';
 
 
 function App() {
@@ -98,7 +99,11 @@ function App() {
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
         </Route>
 
-        
+        <Route path='/invoice'>
+          {authCtx.isLoggedIn &&
+            <Invoice/>}
+          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
+        </Route>
 
 
 
