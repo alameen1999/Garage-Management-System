@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;700&family=Montserrat&family=Teko:wght@500&display=swap');
+
+
+
+
+.manage{
+
+    background-image: url("https://images.unsplash.com/photo-1604147706283-d7119b5b822c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
+    
+
+    text-align:center;
+
+    box-sizing: border-box;
+
+    align-items: center;
+
+    position: relative;
+
+    height: 100vh;
+
+}
+
+
+
+.manage h3{
+
+    margin-top:20px;
+
+    color:#4b4a4a;
+
+    text-align: center;
+
+    font-family: 'Lora', serif;
+
+    width: 100%;
+
+    height: 80px;
+
+    padding: 2% 5%;
+
+    font-size: 24px;
+
+    top: 0;
+
+    margin-top: 0;
+
+    /* background-color: #192d44; */
+
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.75);
+
+}
