@@ -57,7 +57,7 @@ const AddProduct = () => {
       <h3>ADD STOCK DETAILS</h3>
       <div class="container">
       <div class="row justify-content-center">
-      <div className='col-md-4 col-md-offset-6 text-black border border-dark rounded'>
+      <div id='box' className='col-md-4 col-md-offset-6 text-black border shadow-lg p-5 '>
           <form onSubmit={submitHandler} className="" >
             <div class="form">
               <div class=" mb-3">
@@ -94,7 +94,7 @@ const AddProduct = () => {
             </div>
 
 
-            <button class="btn btn-warning" >Add product</button>
+            <button class="btn btn-success" >Add product</button>
              
             {/* <button class="btn btn-success" onClick={returntohome} >Back To Home</button> */}
           </form>
