@@ -74,8 +74,8 @@ const AuthForm = () => {
     let url;
     if (isLogin) {
       url =
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBL_QBa6tSWdpmmXSYoIxd8kgtcAReIQ7w';
-        // 'http://127.0.0.1:8000/api/login/'
+      'http://127.0.0.1:8000/api/login/';
+        
         fetch(url, {
           method: 'POST',
           body: JSON.stringify({
@@ -107,7 +107,7 @@ const AuthForm = () => {
             // const expirationTime = new Date(
             //   new Date().getTime() + +data.expiresIn * 1000
             // );
-            authCtx.login(data.idToken);
+            authCtx.login(data.jwt);
             authCtx.setUser({userName:data.username})
             sessionStorage.setItem('jwt',JSON.stringify(data.jwt))
             // cookies.setItem('jwt',JSON.stringify(data.jwt))
