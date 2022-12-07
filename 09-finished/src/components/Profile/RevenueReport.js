@@ -1,21 +1,46 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Chart from "chart.js/auto";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 // import classes from './UserProfile.module.css';
 import classes from './RevenueReport.module.css';
 
 const RevenueReport = () => {
-    const labels = ["January", "February", "March", "April", "May", "June","july","August"];
+    const[revenueData,setRevenueData]=useState({})
+
+    useEffect(()=>{
+        const fetchMonthlySales = async () => {
+
+            const response = await fetch(
+              'http://127.0.0.1:8000/revenue/getrevenue/4'
+            );
+            if (!response.ok) {
+              throw new Error('Something went wrong!');
+            }
+            const responseData = await response.json();
+           
+            setRevenueData(responseData);
+          };
+          fetchMonthlySales().catch((error)=>{})
+    },[])
+
+    let labels=[]
+    let values=[]
+    for (var key in revenueData){
+        labels.push(key);
+        values.push(revenueData[key])
+    }
     const data = {
         labels: labels,
         datasets: [
             {
-                label: "My First dataset",
+                label: "Sales amount",
+                data:values,
                 
                 backgroundColor: "rgb(35, 89, 190)",
-                borderColor: "rgb(255, 99, 132)",
-                data: [240, 101, 500, 2, 200, 30, 450,100,25],
+                
+                
+                
             },
         ],
     };
@@ -23,7 +48,7 @@ const RevenueReport = () => {
         <div className={classes.profile}>
             <div className={classes.bar_chart}>
             <canvas id="chart"></canvas>
-            <Bar data={data} />
+            <Line data={data} />
             </div>
         </div>
 
