@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dummy from '../../api/Dummy';
 import Select from 'react-select';
-import classes from './UserProfile.module.css';
+import classes from './Addproduct.module.css';
 
 
 const AddProduct = () => {
@@ -53,9 +53,11 @@ const AddProduct = () => {
   }
 
   return (
-    <div className={classes.profile}>
+    <section className={classes.manage}>
       <h3>ADD STOCK DETAILS</h3>
-      <div className='mx-auto p-5 container'>
+      <div class="container">
+      <div class="row justify-content-center">
+      <div id='box' className='col-md-4 col-md-offset-6 text-black border shadow-lg p-5 '>
           <form onSubmit={submitHandler} className="" >
             <div class="form">
               <div class=" mb-3">
@@ -69,12 +71,12 @@ const AddProduct = () => {
               </div>
               <div class=" mb-3">
                 <label for="validationCustom01">PRODUCT NAME</label>
-                <input type="text" class="form-control" id="validationCustom01" required ref={productNameInputRef} />
+                <input type="text" class="form-control bg-light " id="validationCustom01" required ref={productNameInputRef} />
 
               </div>
               <div class="mb-3">
                 <label for="validationCustom02">PRICE</label>
-                <input type="number" class="form-control" id="validationCustom02" required ref={priceInputRef} />
+                <input type="number" class="form-control bg-light" id="validationCustom02" required ref={priceInputRef} />
 
               </div>
               <div class="mb-3">
@@ -83,7 +85,7 @@ const AddProduct = () => {
                   <div class="input-group-prepend">
 
                   </div>
-                  <input type="number" class="form-control" id="validationCustomUsername"  required ref={quantityInputRef} />
+                  <input type="number" class="form-control bg-light" id="validationCustomUsername"  required ref={quantityInputRef} />
                   <div class="invalid-feedback">
 
                   </div>
@@ -92,13 +94,14 @@ const AddProduct = () => {
             </div>
 
 
-            <button class="btn btn-warning" >Add product</button>
+            <button class="btn btn-success" >Add product</button>
              
             {/* <button class="btn btn-success" onClick={returntohome} >Back To Home</button> */}
           </form>
-        
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   )
 
 }

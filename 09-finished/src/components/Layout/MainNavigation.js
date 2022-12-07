@@ -47,7 +47,8 @@ const MainNavigation = () => {
           {isLoggedIn && (
             
             <li >
-             <strong className='text-light'>Welcome  {authCtx.user.userName}</strong> <br></br><Link to='/profile'>profile</Link>
+             <strong className='text-light'>Welcome  {authCtx.user.userName}</strong> 
+             {/* <br></br><Link to='/profile'>profile</Link> */}
             </li>
 
           )}

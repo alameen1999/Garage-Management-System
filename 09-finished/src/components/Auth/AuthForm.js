@@ -74,7 +74,8 @@ const AuthForm = () => {
     let url;
     if (isLogin) {
       url =
-        'http://127.0.0.1:8000/api/login/';
+      'http://127.0.0.1:8000/api/login/';
+        
         fetch(url, {
           method: 'POST',
           body: JSON.stringify({
