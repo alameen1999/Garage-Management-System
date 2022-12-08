@@ -1,4 +1,4 @@
-table{
+.userloggedin{
   position: absolute;
   top: 100px;
   left: 180px;
@@ -28,7 +28,7 @@ table{
   opacity: 0.3;
 } 
 
-td .icon:hover span:after {
+.td .icon:hover span:after {
   opacity: 1;
   right: 0;
 } 

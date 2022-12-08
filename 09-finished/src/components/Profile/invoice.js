@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState,useRef } from "react";
 import { useLocation } from "react-router-dom";
 import ReactToPrint from 'react-to-print'
-import classes from './UserProfile.module.css';
+import classes from './invoice.module.css';
 
 const Invoice = () => {
 
@@ -34,33 +34,39 @@ const Invoice = () => {
             
             
         
-                <div className={classes.profile}>
-                <ReactToPrint trigger={() => (
-                <button>Generate Invoice</button>
-
-            )}
-                content={() => componentRef.current} />
+               <div className={classes.jobcard}>
+                
                 
 
         
-            <div >
-                <table class="table position-relative start-0"  ref={componentRef} >
+        <div >
+                <table className={classes.stylingtable}
+                  class="table position-relative start-0"  ref={componentRef} >
 
-                    <thead class="thead-dark">
+                    <thead>
                         <tr>
                             <h3>SERVICE DETAILS</h3>
                         </tr>
 
                         <tr>
-                            <th>{userDetails?.name}</th>
-                            <th>{userDetails?.vehicleNumber}</th>
-                            <th>{userDetails?.mobileNumber}</th>
-                            <th>{userDetails?.vehicleType}</th>
-                            <th>{userDetails?.engineNumber}</th>
-                            <th>{userDetails?.chaseNumber}</th>
+                            <h6>Customer Name: {userDetails?.name}</h6>
+                        </tr>
+                        <tr>
+                        <h6>Vehicle Number: {userDetails?.vehicleNumber}</h6>
+                        </tr>
+                        <tr>
+                        <h6>Phone Number: {userDetails?.mobileNumber}</h6>
+                        </tr>
+                        <tr>
+                        <h6>Vehicle Type: {userDetails?.vehicleType}</h6>
+                        </tr>
+                        <tr>
+                        <h6>Engine Number: {userDetails?.engineNumber}</h6>
+                        </tr>
+                        <tr>
 
                         </tr>
-
+                        <h6>Chase Number: {userDetails?.chaseNumber}</h6>
                         <tr>
                             {/* <th scope="col">Product Id</th> */}
                             <th scope="col">Product name</th>
@@ -75,9 +81,9 @@ const Invoice = () => {
                             prodDetails.map(function (arr, i) {
                                 return <tr>
                                     {/* <th scope="row">{arr?.estimateProductsId}</th> */}
-                                    <td>{arr?.estimate_product_name}</td>
-                                    <td>{arr?.productQuanity}</td>
-                                    <td>{arr?.productPrice} </td>
+                                    <td className={classes.stylingheader}>{arr?.estimate_product_name}</td>
+                                    <td className={classes.stylingheader}>{arr?.productQuanity}</td>
+                                    <td className={classes.stylingheader}>{arr?.productPrice} </td>
 
                                 </tr>
                             })
@@ -86,17 +92,27 @@ const Invoice = () => {
                         {
                             serviceDetails.map(function (arr, i) {
                                 return <tr>
-                                    <td scope="row">{arr?.estimate_service_name}</td>
+                                    <td className={classes.stylingheader} scope="row">{arr?.estimate_service_name}</td>
 
-                                    <td>{arr?.estimatePrice} </td>
+                                    <td className={classes.stylingheader}>{arr?.estimatePrice} </td>
 
                                 </tr>
                             })
 
                         }
                     </tbody>
+                   
                 </table>
+                
                 </div>
+
+                <div className={classes.btn}>
+                    <ReactToPrint trigger={() => (
+                <button>Generate Invoice</button>
+
+            )}
+                content={() => componentRef.current} />
+                    </div>
 
                 {/* <table class="table position-relative start-0">
                     <thead class="thead-dark">
@@ -124,6 +140,8 @@ const Invoice = () => {
 
 
             </div>
+
+            
         
     )
 }

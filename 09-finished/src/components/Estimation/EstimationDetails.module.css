@@ -58,8 +58,8 @@ margin-bottom: 400px;
 margin-top: 50px;
 margin-right: 200px;
 display: flexbox;
-
-
-
-
+}
+.profile {
+  margin: 5rem auto;
+  text-align: center;
 }

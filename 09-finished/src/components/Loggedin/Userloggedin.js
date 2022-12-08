@@ -10,11 +10,11 @@ const Userloggedin =()=>{
    
     return(
         
-        <table>
+        <table className={classes.userloggedin}>
                 {/* Quick Action */}
            
             <tr>
-                <td><Link to='/addProduct'>
+                <td ><Link to='/addProduct'>
                     <FcExternal  size = '150px'  className={classes.icon}></FcExternal></Link>
                     <h2 className={classes.title}>ADD PRODUCT</h2>
                 </td>

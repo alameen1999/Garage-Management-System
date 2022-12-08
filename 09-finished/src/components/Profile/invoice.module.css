@@ -1,0 +1,23 @@
+.heading{
+    color: black;
+    margin-left: 500px;
+}
+.jobcard {
+    margin: 5rem auto;
+    text-align: center;
+  }
+  .btn{
+    cursor: pointer;
+  padding: 200px;
+  }
+  
+
+.stylingtable, .stylingheader{
+  
+    border: 1px solid;
+    width:30%;
+    border-collapse: collapse;
+
+}
+ 
+  
