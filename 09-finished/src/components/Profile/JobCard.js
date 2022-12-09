@@ -15,18 +15,24 @@ const JobCard = () => {
     const [estimatedetails, setEstimationDetails] = useState([])
     const vehicleNumInputRef = useRef();
     const history = useHistory()
-    const handleComplete =(res,id)=>{
+    const handleComplete =(res,id,total_cost)=>{
         sessionStorage.setItem("customerDetails",JSON.stringify(customerDetails))
         sessionStorage.setItem("estimId",JSON.stringify(id))
+        sessionStorage.setItem("total",JSON.stringify(total_cost))
         history.push('/invoice')
     }
     const handleSearch = () => {
         if (vehicleNumInputRef.current.value.length == 8) {
-            axios.get(`http://127.0.0.1:8000/estimate/getcustomer/${vehicleNumInputRef.current.value}`)
+            axios.post(`http://127.0.0.1:8000/estimate/getcustomer/${vehicleNumInputRef.current.value}/${sessionStorage.getItem('userID')}`)
+            // ,{
+            //     body:JSON.stringify({
+            //             userid:sessionStorage.getItem('userID')
+            //     })
+            // })
                 .then(response => {
                     if (response.data.length !== 0) {
                         setCustomerDetails(response.data[0])
-                        axios.get(`http://127.0.0.1:8000/estimate/estimatedetails/${vehicleNumInputRef.current.value}`)
+                        axios.get(`http://127.0.0.1:8000/estimate/estimatedetails/${vehicleNumInputRef.current.value}/${sessionStorage.getItem('userID')}`)
                             .then(res => {
                                 setEstimationDetails(res.data)
                                 // console.log(data.data);
@@ -110,7 +116,7 @@ const JobCard = () => {
                                     <th scope="row">{arr?.id}</th>
                                     <td>{arr?.date_of_estimation}</td>
                                     <td>{arr?.total_cost}</td>
-                                    <td> {arr?.work_status && <button className='btn btn-success' onClick={()=>{handleComplete("completed",arr?.id)}} >Completed</button>} {!arr?.work_status && <button className='btn btn-danger' onClick={()=>{handleComplete("inCompleted",arr?.id)}} >InCompleted</button>}</td>
+                                    <td> {arr?.work_status && <button className='btn btn-success' onClick={()=>{handleComplete("completed",arr?.id,arr?.total_cost)}} >Completed</button>} {!arr?.work_status && <button className='btn btn-danger' onClick={()=>{handleComplete("inCompleted",arr?.id,arr?.total_cost)}} >InCompleted</button>}</td>
 
                                 </tr>
                             })

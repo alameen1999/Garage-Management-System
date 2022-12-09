@@ -6,7 +6,7 @@
 .manage{
 
     background-image: url("https://images.unsplash.com/photo-1604147706283-d7119b5b822c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80");
-    
+   
 
     text-align:center;
 
@@ -48,4 +48,126 @@
 
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.75);
 
+}
+
+
+
+/* upload css starts here */
+
+.upload
+
+{
+
+    text-align: center;
+
+    box-shadow: 0 0px 10px rgba(40, 40, 40, 0.75);
+
+    border-radius: 1cm;
+
+    padding: 20px;
+
+    width: 50%;
+
+    height: 60vh;
+
+    margin: 7% 25%;
+
+}
+
+
+.upload h4{
+
+    color:#000000;
+
+    text-align: center;
+
+    font-family: 'Lora', serif;
+
+    padding: 2% 5%;
+
+}
+
+
+
+.upload input{
+
+    padding: 3% 3%;
+
+    margin: 5px 5px;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    background-color: #a9b1bc;
+
+    border-radius: 20px;
+
+}
+
+
+
+.upload button{
+
+    background-color: #089618;
+
+    padding: 3% 3%;
+
+    margin: 5px 5px;
+
+    color: white;
+
+    border: none;
+
+    font-family: 'Lora', serif;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    width: 150px;
+
+    border-radius: 20px;
+
+}
+
+
+
+.upload button:hover{
+
+    background-color: #086203;
+
+    padding: 3% 3%;
+
+    margin: 5px 5px;
+
+    border: none;
+
+    font-family: 'Lora', serif;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+}
+
+
+
+.filedata{
+
+    font-family: 'Lora', serif;
+
+    color: #192d44;
+
+}
+.wrap{
+    display:flex;
+}
+
+.ameen{
+    text-align: center;
+    align-items: center;
+    position: relative;
+    height: 10px;
+    width: 700px;
 }

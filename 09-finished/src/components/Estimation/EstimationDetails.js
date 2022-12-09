@@ -680,6 +680,7 @@ import Select from "react-select";
 import { useState } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const EstimationDetails = () => {
   const [name, setName] = useState("");
@@ -694,6 +695,7 @@ const EstimationDetails = () => {
       { value: "LMV", label: "LMV" },
       { value: "HMV", label: "HMV" },
     ];
+  const [estimationdate, setEstimationdate] = useState("");
   const submitHandler=()=>{
     console.log("herer");
     axios.post("http://127.0.0.1:8000/estimate/addcustomer/", {
@@ -779,12 +781,15 @@ const EstimationDetails = () => {
 
     <div className="row">
       <div className="col">
-      <label className={classes.title}> Select Date of Estimation</label>
+      
+           <label className={classes.title}> Select Date of Estimation</label>
              <DatePicker
               className={classes.textbox}
-              
+              selected={estimationdate}
+              onChange={(date) => setEstimationdate(date)}
               dateFormat="yyyy-MM-dd"
             />
+          
       </div>
       <div>
       <label

@@ -11,12 +11,14 @@ const Invoice = () => {
 
     const [userDetails, setUserDetails] = useState();
     const [estimId, setestimId] = useState();
+    const [total, settotal] = useState();
     const [prodDetails, setprodDetails] = useState([])
     const [serviceDetails, setserviceDetails] = useState([])
     useEffect(() => {
         console.log("useEffect", JSON.parse(sessionStorage.getItem('estimId')));
         setUserDetails(JSON.parse(sessionStorage.getItem('customerDetails')))
         setestimId(JSON.parse(sessionStorage.getItem('estimId')))
+        settotal(JSON.parse(sessionStorage.getItem('total')))
         axios.get(`http://127.0.0.1:8000/estimate/estimateproducts/${JSON.parse(sessionStorage.getItem('estimId'))}`)
             .then(res => {
                 console.log(prodDetails);
@@ -40,38 +42,51 @@ const Invoice = () => {
 
         
         <div >
-                <table className={classes.stylingtable}
-                  class="table position-relative start-0"  ref={componentRef} >
+                <table 
+                    ref={componentRef} >
 
                     <thead>
                         <tr>
-                            <h3>SERVICE DETAILS</h3>
+                            <h3 >SERVICE DETAILS</h3>
                         </tr>
 
-                        <tr>
-                            <h6>Customer Name: {userDetails?.name}</h6>
+                        <tr >
+                            <h6>Customer Name: </h6>
+                            <td>{userDetails?.name}</td>
                         </tr>
                         <tr>
-                        <h6>Vehicle Number: {userDetails?.vehicleNumber}</h6>
+                        <h6>Vehicle Number:</h6>
+                        <td> {userDetails?.vehicleNumber}</td>
                         </tr>
                         <tr>
-                        <h6>Phone Number: {userDetails?.mobileNumber}</h6>
+                        <h6>Phone Number:</h6>
+                        <td> {userDetails?.mobileNumber}</td>
                         </tr>
-                        <tr>
-                        <h6>Vehicle Type: {userDetails?.vehicleType}</h6>
+                        <tr >
+                        <h6>Vehicle Type: </h6>
+                        <td>{userDetails?.vehicleType}</td>
                         </tr>
-                        <tr>
-                        <h6>Engine Number: {userDetails?.engineNumber}</h6>
+                        <tr >
+                        <h6>Engine Number: </h6>
+                        <td>{userDetails?.engineNumber}</td>
                         </tr>
                         <tr>
 
-                        </tr>
-                        <h6>Chase Number: {userDetails?.chaseNumber}</h6>
+                        </tr >
                         <tr>
+                        <h6>Chase Number: </h6>
+                         <td>{userDetails?.chaseNumber}</td>
+                        </tr>
+                        
+                        
+                       
+                       
+                        <tr className={classes.stylinrow}>
                             {/* <th scope="col">Product Id</th> */}
                             <th scope="col">Product name</th>
-                            <th scope="col">Quntity</th>
                             <th scope="col">Price</th>
+                            <th scope="col">Quntity</th>
+                            
 
                         </tr>
                     </thead>
@@ -79,11 +94,12 @@ const Invoice = () => {
                     <tbody>
                         {
                             prodDetails.map(function (arr, i) {
-                                return <tr>
+                                return <tr className={classes.stylinrow}>
                                     {/* <th scope="row">{arr?.estimateProductsId}</th> */}
                                     <td className={classes.stylingheader}>{arr?.estimate_product_name}</td>
-                                    <td className={classes.stylingheader}>{arr?.productQuanity}</td>
                                     <td className={classes.stylingheader}>{arr?.productPrice} </td>
+                                    <td className={classes.stylingheader}>{arr?.productQuanity}</td>
+                                    
 
                                 </tr>
                             })
@@ -91,7 +107,7 @@ const Invoice = () => {
                         }
                         {
                             serviceDetails.map(function (arr, i) {
-                                return <tr>
+                                return <tr className={classes.stylinrow}>
                                     <td className={classes.stylingheader} scope="row">{arr?.estimate_service_name}</td>
 
                                     <td className={classes.stylingheader}>{arr?.estimatePrice} </td>
@@ -100,6 +116,11 @@ const Invoice = () => {
                             })
 
                         }
+
+                        <tr>
+                            <th>TOTAL:</th>
+                            <td>{total}</td>
+                        </tr>
                     </tbody>
                    
                 </table>

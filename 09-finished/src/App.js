@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
 import Layout from './components/Layout/Layout';
 import UserProfile from './components/Profile/UserProfile';
 import AuthPage from './pages/AuthPage';
@@ -12,11 +11,9 @@ import Inventory from './components/Profile/Inventory';
 import EmployeeDisplay from './pages/EmployeeDisplay';
 import RevenueReport from './components/Profile/RevenueReport';
 import JobCard from './components/Profile/JobCard';
-
-import ChittyManagers from './components/EmployeeDetails/EmployeeDisplay/SheetDisplay';
-
 import EstimationPage from './pages/EstimationPage';
 import Invoice from './components/Profile/invoice';
+import SheetDisplay from './components/EmployeeDetails/EmployeeDisplay/SheetDisplay';
 
 
 function App() {
@@ -27,16 +24,8 @@ function App() {
       <Switch>
 
       {authCtx.isLoggedIn && ( 
-      <Route path="/employee/managerslist" component={ChittyManagers}/>
+      <Route path="/employee/managerslist" component={SheetDisplay}/>
       )}
-
-        {/* {authCtx.isLoggedIn && ( 
-        <Route path='/useraccount' exact>
-          <Loggedin/>
-        </Route>
-        )} */}
-
-
 
         {!authCtx.isLoggedIn && (
           <Route path='/' exact>
@@ -104,21 +93,6 @@ function App() {
             <Invoice/>}
           {!authCtx.isLoggedIn && <Redirect to='/auth' />}
         </Route>
-
-
-
-
-
-
-
-
-        {/* <Route path='/useraccount'>
-          {authCtx.isLoggedIn && 
-          <Loggedin/>}
-          {!authCtx.isLoggedIn && <Redirect to='/auth' />}
-        </Route> */}
-
-
 
         <Route path='*'>
           <Redirect to='/' />

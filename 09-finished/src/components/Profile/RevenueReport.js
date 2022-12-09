@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import Chart from "chart.js/auto";
-import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 // import classes from './UserProfile.module.css';
 import classes from './RevenueReport.module.css';
 
@@ -12,7 +12,7 @@ const RevenueReport = () => {
         const fetchMonthlySales = async () => {
 
             const response = await fetch(
-              'http://127.0.0.1:8000/revenue/getrevenue/4'
+              `http://127.0.0.1:8000/revenue/getrevenue/${sessionStorage.getItem('userID')}`
             );
             if (!response.ok) {
               throw new Error('Something went wrong!');
@@ -48,7 +48,7 @@ const RevenueReport = () => {
         <div className={classes.profile}>
             <div className={classes.bar_chart}>
             <canvas id="chart"></canvas>
-            <Line data={data} />
+            <Bar data={data} />
             </div>
         </div>
 

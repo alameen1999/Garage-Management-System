@@ -9,7 +9,7 @@ import DataTable from "react-data-table-component";
 
 
 
-const ChittyManagers = () => {
+const SheetDisplay = () => {
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/employee/displayemployee/${sessionStorage.getItem('userID')}`)
       .then(response => {
@@ -83,4 +83,4 @@ const ChittyManagers = () => {
   )
 
 }
-export default ChittyManagers
+export default SheetDisplay

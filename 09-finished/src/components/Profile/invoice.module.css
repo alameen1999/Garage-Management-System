@@ -8,15 +8,16 @@
   }
   .btn{
     cursor: pointer;
-  padding: 200px;
+  padding: 70px;
   }
   
 
-.stylingtable, .stylingheader{
-  
+.stylingtable, .stylingheader, .stylinrow{
     border: 1px solid;
     width:30%;
-    border-collapse: collapse;
+    margin-left: 30px;
+    
+    
 
 }
  

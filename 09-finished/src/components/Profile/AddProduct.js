@@ -10,6 +10,58 @@ const AddProduct = () => {
   const [inputValue, setValue] = useState('');
   const [selectedValue, setSelectedValue] = useState(null);
 
+  const [selectedFile, setState] = useState(null);
+  // On file select (from the pop up)
+  const onFileChange = event => {
+    // Update the state
+    setState(event.target.files[0]);
+  };
+
+
+  const onFileUpload = (e) => {
+    e.preventDefault();
+    setState(e.target.files);
+
+    const formData = new FormData();
+    formData.append('productdetails', selectedFile);
+    fetch('http://127.0.0.1:8000/product/excelproductupload/', { method: 'post', body: formData })
+      .then(res => {
+        if (res.ok) {
+          console.log(res.data);
+          alert("File uploaded successfully.")
+        }
+      });
+  };
+
+
+  const fileData = () => {
+    if (selectedFile) {
+      return (
+
+        <div className={classes.detailsShown}>
+          <h6>File Details:</h6>
+          <p>File Name: {selectedFile.name}</p>
+          <p>
+            Last Modified:{" "}
+            {selectedFile.lastModifiedDate.toDateString()}
+          </p>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <br />
+
+          <h6>Choose before Pressing the Upload button</h6>
+
+
+        </div>
+      );
+    }
+  };
+
+
+
   const productNameInputRef = useRef();
   const priceInputRef = useRef();
   const quantityInputRef = useRef();
@@ -24,7 +76,7 @@ const AddProduct = () => {
   const handleChange = value => {
     setSelectedValue(value);
   }
-  const returntohome=()=>{
+  const returntohome = () => {
 
 
   }
@@ -36,9 +88,9 @@ const AddProduct = () => {
       productPrice: priceInputRef.current.value,
       categoryId: selectedValue.value,
       productQuantity: quantityInputRef.current.value,
-      userId:sessionStorage.getItem('userID')
+      userId: sessionStorage.getItem('userID')
     }
-    Dummy.post('addproduct/',prodDetails).then(res=>{
+    Dummy.post('addproduct/', prodDetails).then(res => {
       console.log(res);
       alert(JSON.stringify(res.data.message))
     })
@@ -55,49 +107,82 @@ const AddProduct = () => {
   return (
     <section className={classes.manage}>
       <h3>ADD STOCK DETAILS</h3>
-      <div class="container">
-      <div class="row justify-content-center">
-      <div id='box' className='col-md-4 col-md-offset-6 text-black border shadow-lg p-5 '>
-          <form onSubmit={submitHandler} className="" >
-            <div class="form">
-              <div class=" mb-3">
-                <label for="validationCustom01">PRODUCT CATEGORY</label>
-                <Select
-                  value={selectedValue}
-                  onChange={handleChange}
-                  options={items}
-                  required
-                />
-              </div>
-              <div class=" mb-3">
-                <label for="validationCustom01">PRODUCT NAME</label>
-                <input type="text" class="form-control bg-light " id="validationCustom01" required ref={productNameInputRef} />
 
-              </div>
-              <div class="mb-3">
-                <label for="validationCustom02">PRICE</label>
-                <input type="number" class="form-control bg-light" id="validationCustom02" required ref={priceInputRef} />
 
-              </div>
-              <div class="mb-3">
-                <label for="validationCustomUsername">QUANITY</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
+      <div className={classes.wrap}>
 
-                  </div>
-                  <input type="number" class="form-control bg-light" id="validationCustomUsername"  required ref={quantityInputRef} />
-                  <div class="invalid-feedback">
+        {/* upload return statement */}
+        <div className={classes.ameen}>
 
-                  </div>
-                </div>
-              </div>
+          {/* <h1 className={classes.header}>
+                    Employee Data
+                </h1> */}
+          <div className={classes.upload}>
+            <h4>
+              Upload product details
+            </h4>
+            <div>
+
+              <br></br>
+              <input type="file" onChange={onFileChange} />
+              <button onClick={onFileUpload}>
+                Upload!
+
+              </button>
             </div>
 
 
-            <button class="btn btn-success" >Add product</button>
-             
-            {/* <button class="btn btn-success" onClick={returntohome} >Back To Home</button> */}
-          </form>
+            <div className={classes.filedata}>{fileData()}</div>
+
+          </div>
+        </div>
+
+        <div>
+          <div class="container">
+            <div class="row justify-content-center">
+              <div id='box' className=' col-md-offset-6 text-black border shadow-lg p-5 '>
+                <form onSubmit={submitHandler} className="" >
+                  <div class="form">
+                    <div class=" mb-3">
+                      <label for="validationCustom01">PRODUCT CATEGORY</label>
+                      <Select
+                        value={selectedValue}
+                        onChange={handleChange}
+                        options={items}
+                        required
+                      />
+                    </div>
+                    <div class=" mb-3">
+                      <label for="validationCustom01">PRODUCT NAME</label>
+                      <input type="text" class="form-control bg-light " id="validationCustom01" required ref={productNameInputRef} />
+
+                    </div>
+                    <div class="mb-3">
+                      <label for="validationCustom02">PRICE</label>
+                      <input type="number" class="form-control bg-light" id="validationCustom02" required ref={priceInputRef} />
+
+                    </div>
+                    <div class="mb-3">
+                      <label for="validationCustomUsername">QUANITY</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+
+                        </div>
+                        <input type="number" class="form-control bg-light" id="validationCustomUsername" required ref={quantityInputRef} />
+                        <div class="invalid-feedback">
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <button class="btn btn-success" >Add product</button>
+
+                  {/* <button class="btn btn-success" onClick={returntohome} >Back To Home</button> */}
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
