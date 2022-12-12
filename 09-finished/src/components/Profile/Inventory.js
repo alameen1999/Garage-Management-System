@@ -72,7 +72,7 @@ const Inventory = () => {
   }
 
   const printdetails=()=>{
-    window.open(`http://127.0.0.1:8000/product/printproductdetails/${sessionStorage.getItem('userID')}`,'_blank','noopener,noreferrer')
+    window.open(`http://127.0.0.1:8000/product/printproductdetails/`,'_blank','noopener,noreferrer')
   }
   return (
     <div className={classes.profile}>
