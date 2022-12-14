@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState,useRef } from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import ReactToPrint from 'react-to-print'
 import classes from './invoice.module.css';
 
@@ -32,6 +32,12 @@ const Invoice = () => {
 
     }, [])
 
+    const changeStatus=()=>{
+        axios.put(`http://127.0.0.1:8000/estimate/updateworkstatus/${JSON.parse(sessionStorage.getItem('estimId'))}`,{
+            status:true
+        })
+    }
+
     return (
             
             
@@ -41,14 +47,16 @@ const Invoice = () => {
                 
 
         
-        <div >
+        <div  ref={componentRef} >
+                    <h1 class="text-center">AUTOMOTIVE</h1>
+                            
                 <table 
-                    ref={componentRef} >
+                    >
 
                     <thead>
-                        <tr>
-                            <h3 >SERVICE DETAILS</h3>
-                        </tr>
+                      <tr> <h3>SERVICE DETAILS</h3></tr>  
+                   
+                        
 
                         <tr >
                             <h6>Customer Name: </h6>
@@ -127,13 +135,12 @@ const Invoice = () => {
                 
                 </div>
 
-                <div className={classes.btn}>
-                    <ReactToPrint trigger={() => (
-                <button>Generate Invoice</button>
-
-            )}
+                <div className={classes.btn} onClick={changeStatus}>
+                    <ReactToPrint   trigger={() => ( 
+                    <button>Generate Invoice</button> )}
                 content={() => componentRef.current} />
                     </div>
+                    
 
                 {/* <table class="table position-relative start-0">
                     <thead class="thead-dark">

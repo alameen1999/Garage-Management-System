@@ -5,10 +5,13 @@ import classes from './UserProfile.module.css';
 
 
 const Inventory = () => {
+  let auth= `${JSON.parse( sessionStorage.getItem('jwt'))}`
   let httpClient =axios.create({
     baseURL: 'http://127.0.0.1:8000/product/',
     headers: {
-      Authorization : `Bearer ${JSON.parse( sessionStorage.getItem('jwt'))}`
+      // Authorization : `Bearer ${JSON.parse( sessionStorage.getItem('jwt'))}`
+     
+      'Authorization' :auth
       }
   })
   useEffect(() => {
