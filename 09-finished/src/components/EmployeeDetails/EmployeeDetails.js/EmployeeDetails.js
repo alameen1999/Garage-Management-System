@@ -38,8 +38,8 @@ async function addEmployeeHandler() {
         userId: JSON.parse(sessionStorage.getItem("userID"))
        
     };
-    const myJSON = JSON.stringify(user);
-    console.log(myJSON);
+    // const myJSON = JSON.stringify(user);
+    // console.log(myJSON);
     const response = await fetch('http://127.0.0.1:8000/employee/singleemployee/', {
       method: 'POST',
       body: JSON.stringify(user),

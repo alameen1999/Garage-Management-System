@@ -10,16 +10,10 @@ const Inventory = () => {
     baseURL: 'http://127.0.0.1:8000/product/',
     headers: {
       // Authorization : `Bearer ${JSON.parse( sessionStorage.getItem('jwt'))}`
-     
       'Authorization' :auth
       }
   })
   useEffect(() => {
-    // axios.get('http://127.0.0.1:8000/product/displayproduct/')
-    //   .then(response => {
-    //     setProductDetails(response.data)
-    //     setOrgData(response.data)
-    //   })
     httpClient.get('displayproduct/')
     .then(response => {
       console.log(response.data);
@@ -65,7 +59,7 @@ const Inventory = () => {
     axios.put(`http://127.0.0.1:8000/product/updateproduct/${prodId}`,{
       name:productDetails[i].productName,
       price:productDetails[i].productPrice,
-      quantity:inputValue
+      quantity:JSON.parse(inputValue)
     })
     .then(res=>{
       alert("Product Updated success")
@@ -97,7 +91,8 @@ const Inventory = () => {
               <th scope="row">{i + 1}</th>
               <td>{object.productName}</td>
               <td>{object.productPrice}</td>
-              <td><input disabled={status || i != indexer} type="number" defaultValue={object.productQuantity} onChange={(event)=>handleChangeText(event)}/></td>
+              <td>{object.productQuantity}</td>
+              <td><input disabled={status || i != indexer} type="number"  onChange={(event)=>handleChangeText(event)}/></td>
               <td>
                 
                   {

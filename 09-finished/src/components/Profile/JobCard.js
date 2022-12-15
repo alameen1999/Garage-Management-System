@@ -22,13 +22,11 @@ const JobCard = () => {
         history.push('/invoice')
     }
     const handleSearch = () => {
-        if (vehicleNumInputRef.current.value.length == 8) {
-            axios.post(`http://127.0.0.1:8000/estimate/getcustomer/${vehicleNumInputRef.current.value}/${sessionStorage.getItem('userID')}`)
-            // ,{
-            //     body:JSON.stringify({
-            //             userid:sessionStorage.getItem('userID')
-            //     })
-            // })
+       
+        if (vehicleNumInputRef.current.value.length == 9||vehicleNumInputRef.current.value.length == 8) {
+            axios.post(`http://127.0.0.1:8000/estimate/getcustomer/${vehicleNumInputRef.current.value}/${sessionStorage.getItem('userID')}`,)
+               
+          
                 .then(response => {
                     if (response.data.length !== 0) {
                         setCustomerDetails(response.data[0])
@@ -55,9 +53,9 @@ const JobCard = () => {
 
                 <div >
 
-                    <h3 className='pt-5'>Click on search icon</h3>
+                    <h3 className='pt-5'>Search your Vehicle By Number</h3>
                     <div>
-                        <input type="text" placeholder="Enter the Vehicle Number" ref={vehicleNumInputRef} required maxLength={8} onChange={handleSearch} /><br></br>
+                        <input type="text" placeholder="Enter the Vehicle Number" ref={vehicleNumInputRef} required maxLength={9} onChange={handleSearch} /><br></br>
 
 
                     </div>

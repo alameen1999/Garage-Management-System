@@ -26,12 +26,6 @@ const EstimationDetails = () => {
   const qty = useRef();
   const [total, setTotal] = useState(0)
   const [estimationdate, setEstimationdate] = useState("");
-  const options = [
-    { value: "  two wheelr", label: "Two wheeler" },
-    { value: "four wheeler", label: "four wheeeler" },
-    { value: "LMV", label: "LMV" },
-    { value: "HMV", label: "HMV" },
-  ];
 
   const handleItmRemove = (type, ind) => {
     if (type == "product") {
@@ -52,12 +46,10 @@ const EstimationDetails = () => {
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/estimate/getestimateproducts/')
       .then(res => {
-        console.log(res.data);
         setProducts(res.data)
       })
     axios.get('http://127.0.0.1:8000/estimate/getservices/')
       .then(res => {
-        console.log(res.data);
         setServices(res.data)
       })
   }, [])
@@ -117,7 +109,6 @@ const EstimationDetails = () => {
     }
     else {
       if (selectedItem.value) {
-        console.log(selectedItem.value);
         let data = {
           estimate_service_name: selectedItem.value.services,
           estimateServiceId: selectedItem.value.id,
@@ -152,7 +143,6 @@ const EstimationDetails = () => {
     setTotal(pSum + sSum)
   }
   const submitHandler = () => {
-    console.log("herer");
     axios.post("http://127.0.0.1:8000/estimate/addcustomer/", {
       vehicleNumber: vehicleno,
       name: name,
@@ -191,7 +181,8 @@ const EstimationDetails = () => {
  
   return (
     <div className={classes.profile}>
-      <h4>Register New Customer</h4>
+      <h3>Register New Customer</h3>
+      <h6 className={classes.fields}>All fields are mandatory</h6>
       <div className="mx-auto">
         <div className="row row-cols-lg-3 row-cols-sm-1 ">
           <div>
@@ -199,7 +190,7 @@ const EstimationDetails = () => {
             <input
               className={classes.textbox}
               placeholder="Name" value={name}
-              onChange={(e) => setName(e.target.value)}></input>
+              onChange={(event) => setName(event.target.value)}></input>
           </div>
           <div>
             <label className={classes.title}>Enter Phone Number</label>
@@ -241,6 +232,7 @@ const EstimationDetails = () => {
               className={classes.textbox}
               placeholder="Engine Number"
               value={engineno}
+
               onChange={(e) => setEngineno(e.target.value)}
             ></input>
           </div>
@@ -292,7 +284,7 @@ const EstimationDetails = () => {
           />
         </div>
         <div>
-          <label className={classes.title}>select the product</label>
+          <label className={classes.title}>select the item</label>
           <Select
             value={selectedItem}
             onChange={handleSelectedItems}

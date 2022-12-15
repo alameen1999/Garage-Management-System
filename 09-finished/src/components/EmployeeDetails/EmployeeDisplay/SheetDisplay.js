@@ -24,7 +24,7 @@ const SheetDisplay = () => {
   // const [status,setStatus] = useState(true)
   // const [indexer,setindexer] = useState('')
   const handleSearch =()=>{
-    if(searchInpRef.current.value.length >= 3){
+    if(searchInpRef.current.value.length >= 1){
       const resp =productDetails.filter(data=> data.Name.includes(searchInpRef.current.value))
       setProductDetails([...resp])
     }

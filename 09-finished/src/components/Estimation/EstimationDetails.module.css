@@ -63,3 +63,7 @@ display: flexbox;
   margin: 5rem auto;
   text-align: center;
 }
+.fields{
+  color: rgb(255, 0, 0);
+  font-family:Georgia, 
+}
