@@ -146,6 +146,7 @@ const AuthForm = () => {
             ref={passwordInputRef}
           />
         </div>
+        
         <div className={classes.actions}>
           {!isLoading && (
             <button>{isLogin ? 'Login' : 'Create Account'}</button>
@@ -161,6 +162,8 @@ const AuthForm = () => {
         </div>
       </form>
     </section>
+
   );
+
 };
 export default AuthForm;

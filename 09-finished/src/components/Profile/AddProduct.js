@@ -165,9 +165,11 @@ const AddProduct = () => {
                     <div class="mb-3">
                       <label for="validationCustomUsername">QUANITY</label>
                       <div class="input-group">
+                        
                         <div class="input-group-prepend">
 
                         </div>
+
                         <input type="number" class="form-control bg-light" id="validationCustomUsername" required ref={quantityInputRef} />
                         <div class="invalid-feedback">
 

@@ -361,10 +361,12 @@ const EstimationDetails = () => {
       <div className="position-absolute end-0">
         
         <button className="btn btn-success "  onClick={addestimatedetails}>CONVERT TO JOBCARD</button>
+        
       </div>
       
     </div>
   )
+
 }
 
 export default EstimationDetails;

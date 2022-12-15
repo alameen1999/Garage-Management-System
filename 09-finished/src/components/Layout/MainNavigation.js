@@ -24,6 +24,7 @@ const MainNavigation = () => {
       {/* <div className={classes.headericon}>
         <img src={picture}/>  
       </div> */}
+      
       <div className={classes.headericon}></div>
 
       <Link to='/'>
